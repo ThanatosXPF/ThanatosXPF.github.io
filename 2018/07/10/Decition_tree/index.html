@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="机器学习算法-决策树前言决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。 决策树基本算法输入:  训练集 $D$ = ${(x_1, y_1), (x_2, y_2), …, (x_m, y_m)}$属性集 $A$">
+<meta name="description" content="机器学习算法-决策树 前言 决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。 决策树基本算法 输入: 训练集 \(D\) = \(\{(x_1, y_1), (x_2, y_2), ..., (x_m, y_m)\">
 <meta name="keywords" content="Algorithm,Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习算法笔记-决策树">
 <meta property="og:url" content="http://yoursite.com/2018/07/10/Decition_tree/index.html">
 <meta property="og:site_name" content="流水">
-<meta property="og:description" content="机器学习算法-决策树前言决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。 决策树基本算法输入:  训练集 $D$ = ${(x_1, y_1), (x_2, y_2), …, (x_m, y_m)}$属性集 $A$">
+<meta property="og:description" content="机器学习算法-决策树 前言 决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。 决策树基本算法 输入: 训练集 \(D\) = \(\{(x_1, y_1), (x_2, y_2), ..., (x_m, y_m)\">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-04-16T16:14:53.679Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习算法笔记-决策树">
-<meta name="twitter:description" content="机器学习算法-决策树前言决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。 决策树基本算法输入:  训练集 $D$ = ${(x_1, y_1), (x_2, y_2), …, (x_m, y_m)}$属性集 $A$">
+<meta name="twitter:description" content="机器学习算法-决策树 前言 决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。 决策树基本算法 输入: 训练集 \(D\) = \(\{(x_1, y_1), (x_2, y_2), ..., (x_m, y_m)\">
 
 
 
@@ -342,13 +342,33 @@
       
 
       
-        <h1 id="机器学习算法-决策树"><a href="#机器学习算法-决策树" class="headerlink" title="机器学习算法-决策树"></a>机器学习算法-决策树</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。</p>
-<h2 id="决策树基本算法"><a href="#决策树基本算法" class="headerlink" title="决策树基本算法"></a>决策树基本算法</h2><p>输入: </p>
-<p>训练集 $D$ = ${(x_1, y_1), (x_2, y_2), …, (x_m, y_m)}$<br>属性集 $A$ = ${(a_1, a_2, …, a_d)}$  </p>
-<p>过程：函数 $TreeGenerate(G, A)$<br>if $D$ 中的样本全属于同一类别 $C$ then<br>&emsp; 将node标记为 $C$ 类叶节点; return<br>end if<br>if $A$ = $\emptyset$ OR $D$ 中的样本在 $A$ 上的取值相同 then<br>&emsp; 将node标记为叶节点，类别为 $D$ 中样本最多的一类; return<br>end if<br>从 $A$ 中选择最优化分属性 $a_<em>$<br>for $a_</em>$ 的每一个取值 $a_{<em>}^{v}$ do<br>&emsp; 为node生成一个分支；令 $D_v$ 表示 $D$ 中在 $a_</em>$ 上取值为 $a_{<em>}^{v}$ 的样本子集;<br>&emsp; if $D_v$ 为空 then<br>&emsp;&emsp; 将分支结点标记为叶节点，其类别标记为 $D$ 中样本最多的类; return<br>&emsp; else<br>&emsp;&emsp;以 $TreeGenerate(D_v, A \setminus{a_</em>})$ 为分支结点<br>&emsp;end if<br>end for  </p>
-<h2 id="属性划分"><a href="#属性划分" class="headerlink" title="属性划分"></a>属性划分</h2><p>假定当前样本集合 $D$ 中第 $k$ 类样本所占比例为 $p_k$ ($k$ = 1,2, … ,$\mathcal{|Y|}$)</p>
-<p>1.信息熵<br>$$Ent(D) = - \sum_{k=1}^{|\mathcal{Y}|}p_klog_2p_k$$<br>2.信息增益<br>$$ Gain(D, a) = Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v\rvert}{\lvert D \rvert}Ent(D^v)$$</p>
-<p>3.信息增益率<br>$$Gain_ratio = \frac{Gain(D, a)}{IV(a)}$$<br>$$IV(a) = -\sum_{v=1}^{V}\frac{|D^v|}{|D|}log_2\frac{|D^v|}{|D|}$$<br>4.基尼系数<br>$$Gini(D)=\sum_{k=1}^{|\mathcal{Y}|}\sum_{k^{<code>} \neq k}p_k p_{k^</code>}$$<br>$$Gini_index(D,a) = \sum_{v=1}^{V}\frac{|D^v|}{|D|}Gini(D^v)$$</p>
+        <h1 id="机器学习算法-决策树">机器学习算法-决策树</h1>
+<h2 id="前言">前言</h2>
+<p>决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。</p>
+<h2 id="决策树基本算法">决策树基本算法</h2>
+<p>输入:</p>
+<p>训练集 <span class="math inline">\(D\)</span> = <span class="math inline">\(\{(x_1, y_1), (x_2, y_2), ..., (x_m, y_m)\}\)</span><br>
+属性集 <span class="math inline">\(A\)</span> = <span class="math inline">\(\{(a_1, a_2, ..., a_d)\}\)</span></p>
+<p>过程：函数 <span class="math inline">\(TreeGenerate(G, A)\)</span><br>
+if <span class="math inline">\(D\)</span> 中的样本全属于同一类别 <span class="math inline">\(C\)</span> then<br>
+  将node标记为 <span class="math inline">\(C\)</span> 类叶节点; return<br>
+end if<br>
+if <span class="math inline">\(A\)</span> = <span class="math inline">\(\emptyset\)</span> OR <span class="math inline">\(D\)</span> 中的样本在 <span class="math inline">\(A\)</span> 上的取值相同 then<br>
+  将node标记为叶节点，类别为 <span class="math inline">\(D\)</span> 中样本最多的一类; return<br>
+end if<br>
+从 <span class="math inline">\(A\)</span> 中选择最优化分属性 <span class="math inline">\(a_*\)</span><br>
+for <span class="math inline">\(a_*\)</span> 的每一个取值 <span class="math inline">\(a_{*}^{v}\)</span> do<br>
+  为node生成一个分支；令 <span class="math inline">\(D_v\)</span> 表示 <span class="math inline">\(D\)</span> 中在 <span class="math inline">\(a_*\)</span> 上取值为 <span class="math inline">\(a_{*}^{v}\)</span> 的样本子集;<br>
+  if <span class="math inline">\(D_v\)</span> 为空 then<br>
+   将分支结点标记为叶节点，其类别标记为 <span class="math inline">\(D\)</span> 中样本最多的类; return<br>
+  else<br>
+  以 <span class="math inline">\(TreeGenerate(D_v, A \setminus\{a_*\})\)</span> 为分支结点<br>
+ end if<br>
+end for</p>
+<h2 id="属性划分">属性划分</h2>
+<p>假定当前样本集合 <span class="math inline">\(D\)</span> 中第 <span class="math inline">\(k\)</span> 类样本所占比例为 <span class="math inline">\(p_k\)</span> (<span class="math inline">\(k\)</span> = 1,2, ... ,<span class="math inline">\(\mathcal{|Y|}\)</span>)</p>
+<p>1.信息熵 <span class="math display">\[Ent(D) = - \sum_{k=1}^{|\mathcal{Y}|}p_klog_2p_k\]</span> 2.信息增益 <span class="math display">\[ Gain(D, a) = Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v\rvert}{\lvert D \rvert}Ent(D^v)\]</span></p>
+<p>3.信息增益率 <span class="math display">\[Gain\_ratio = \frac{Gain(D, a)}{IV(a)}\]</span> <span class="math display">\[IV(a) = -\sum_{v=1}^{V}\frac{|D^v|}{|D|}log_2\frac{|D^v|}{|D|}\]</span> 4.基尼系数 <span class="math display">\[Gini(D)=\sum_{k=1}^{|\mathcal{Y}|}\sum_{k^{`} \neq k}p_k p_{k^`}\]</span> <span class="math display">\[Gini\_index(D,a) = \sum_{v=1}^{V}\frac{|D^v|}{|D|}Gini(D^v)\]</span></p>
 
       
     </div>

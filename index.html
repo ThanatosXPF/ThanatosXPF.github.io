@@ -345,22 +345,26 @@
       
         
           
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><strong>问题描述</strong></h2><p>Given a non-empty array of integers, return the k most frequent elements.</p>
+            <h2 id="问题描述"><strong>问题描述</strong></h2>
+<p>Given a non-empty array of integers, return the k most frequent elements.</p>
 <p>Example 1:</p>
 <pre><code>Input: nums = [1,1,1,2,2,3], k = 2
-Output: [1,2]
-</code></pre><p>Example 2:</p>
+Output: [1,2]</code></pre>
+<p>Example 2:</p>
 <pre><code>Input: nums = [1], k = 1
-Output: [1]
-</code></pre><p>Note:</p>
+Output: [1]</code></pre>
+<p>Note:</p>
 <ul>
 <li>You may assume k is always valid, 1 ≤ k ≤ number of unique elements.</li>
-<li>Your algorithm’s time complexity must be better than O(n log n), where n is the array’s size.</li>
+<li>Your algorithm's time complexity must be better than O(n log n), where n is the array's size.</li>
 </ul>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a><strong>解题思路</strong></h2><p>统计每个元素出现的次数。按次数排序取前k个。</p>
+<h2 id="解题思路"><strong>解题思路</strong></h2>
+<p>统计每个元素出现的次数。按次数排序取前k个。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">topKFrequent</span><span class="params">(self, nums: List[int], k: int)</span> -&gt; List[int]:</span></span><br><span class="line">        d = collections.Counter(nums)</span><br><span class="line">        <span class="keyword">return</span> sorted(d.keys(), key=<span class="keyword">lambda</span> x:d[x], reverse=<span class="keyword">True</span>)[:k]</span><br></pre></td></tr></table></figure>
-<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a><strong>进阶</strong></h2><p>使用堆取前k大的元素</p>
+<h2 id="进阶"><strong>进阶</strong></h2>
+<p>使用堆取前k大的元素</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">topKFrequent</span><span class="params">(self, nums: List[int], k: int)</span> -&gt; List[int]:</span></span><br><span class="line">        l = [(-counts, elem) <span class="keyword">for</span> elem, counts <span class="keyword">in</span> collections.Counter(nums).items()]</span><br><span class="line">        heapq.heapify(l)</span><br><span class="line">        <span class="keyword">return</span> [heapq.heappop(l)[<span class="number">1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(k)]</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -501,13 +505,33 @@ Output: [1]
       
         
           
-            <h1 id="机器学习算法-决策树"><a href="#机器学习算法-决策树" class="headerlink" title="机器学习算法-决策树"></a>机器学习算法-决策树</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。</p>
-<h2 id="决策树基本算法"><a href="#决策树基本算法" class="headerlink" title="决策树基本算法"></a>决策树基本算法</h2><p>输入: </p>
-<p>训练集 $D$ = ${(x_1, y_1), (x_2, y_2), …, (x_m, y_m)}$<br>属性集 $A$ = ${(a_1, a_2, …, a_d)}$  </p>
-<p>过程：函数 $TreeGenerate(G, A)$<br>if $D$ 中的样本全属于同一类别 $C$ then<br>&emsp; 将node标记为 $C$ 类叶节点; return<br>end if<br>if $A$ = $\emptyset$ OR $D$ 中的样本在 $A$ 上的取值相同 then<br>&emsp; 将node标记为叶节点，类别为 $D$ 中样本最多的一类; return<br>end if<br>从 $A$ 中选择最优化分属性 $a_<em>$<br>for $a_</em>$ 的每一个取值 $a_{<em>}^{v}$ do<br>&emsp; 为node生成一个分支；令 $D_v$ 表示 $D$ 中在 $a_</em>$ 上取值为 $a_{<em>}^{v}$ 的样本子集;<br>&emsp; if $D_v$ 为空 then<br>&emsp;&emsp; 将分支结点标记为叶节点，其类别标记为 $D$ 中样本最多的类; return<br>&emsp; else<br>&emsp;&emsp;以 $TreeGenerate(D_v, A \setminus{a_</em>})$ 为分支结点<br>&emsp;end if<br>end for  </p>
-<h2 id="属性划分"><a href="#属性划分" class="headerlink" title="属性划分"></a>属性划分</h2><p>假定当前样本集合 $D$ 中第 $k$ 类样本所占比例为 $p_k$ ($k$ = 1,2, … ,$\mathcal{|Y|}$)</p>
-<p>1.信息熵<br>$$Ent(D) = - \sum_{k=1}^{|\mathcal{Y}|}p_klog_2p_k$$<br>2.信息增益<br>$$ Gain(D, a) = Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v\rvert}{\lvert D \rvert}Ent(D^v)$$</p>
-<p>3.信息增益率<br>$$Gain_ratio = \frac{Gain(D, a)}{IV(a)}$$<br>$$IV(a) = -\sum_{v=1}^{V}\frac{|D^v|}{|D|}log_2\frac{|D^v|}{|D|}$$<br>4.基尼系数<br>$$Gini(D)=\sum_{k=1}^{|\mathcal{Y}|}\sum_{k^{<code>} \neq k}p_k p_{k^</code>}$$<br>$$Gini_index(D,a) = \sum_{v=1}^{V}\frac{|D^v|}{|D|}Gini(D^v)$$</p>
+            <h1 id="机器学习算法-决策树">机器学习算法-决策树</h1>
+<h2 id="前言">前言</h2>
+<p>决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。</p>
+<h2 id="决策树基本算法">决策树基本算法</h2>
+<p>输入:</p>
+<p>训练集 <span class="math inline">\(D\)</span> = <span class="math inline">\(\{(x_1, y_1), (x_2, y_2), ..., (x_m, y_m)\}\)</span><br>
+属性集 <span class="math inline">\(A\)</span> = <span class="math inline">\(\{(a_1, a_2, ..., a_d)\}\)</span></p>
+<p>过程：函数 <span class="math inline">\(TreeGenerate(G, A)\)</span><br>
+if <span class="math inline">\(D\)</span> 中的样本全属于同一类别 <span class="math inline">\(C\)</span> then<br>
+  将node标记为 <span class="math inline">\(C\)</span> 类叶节点; return<br>
+end if<br>
+if <span class="math inline">\(A\)</span> = <span class="math inline">\(\emptyset\)</span> OR <span class="math inline">\(D\)</span> 中的样本在 <span class="math inline">\(A\)</span> 上的取值相同 then<br>
+  将node标记为叶节点，类别为 <span class="math inline">\(D\)</span> 中样本最多的一类; return<br>
+end if<br>
+从 <span class="math inline">\(A\)</span> 中选择最优化分属性 <span class="math inline">\(a_*\)</span><br>
+for <span class="math inline">\(a_*\)</span> 的每一个取值 <span class="math inline">\(a_{*}^{v}\)</span> do<br>
+  为node生成一个分支；令 <span class="math inline">\(D_v\)</span> 表示 <span class="math inline">\(D\)</span> 中在 <span class="math inline">\(a_*\)</span> 上取值为 <span class="math inline">\(a_{*}^{v}\)</span> 的样本子集;<br>
+  if <span class="math inline">\(D_v\)</span> 为空 then<br>
+   将分支结点标记为叶节点，其类别标记为 <span class="math inline">\(D\)</span> 中样本最多的类; return<br>
+  else<br>
+  以 <span class="math inline">\(TreeGenerate(D_v, A \setminus\{a_*\})\)</span> 为分支结点<br>
+ end if<br>
+end for</p>
+<h2 id="属性划分">属性划分</h2>
+<p>假定当前样本集合 <span class="math inline">\(D\)</span> 中第 <span class="math inline">\(k\)</span> 类样本所占比例为 <span class="math inline">\(p_k\)</span> (<span class="math inline">\(k\)</span> = 1,2, ... ,<span class="math inline">\(\mathcal{|Y|}\)</span>)</p>
+<p>1.信息熵 <span class="math display">\[Ent(D) = - \sum_{k=1}^{|\mathcal{Y}|}p_klog_2p_k\]</span> 2.信息增益 <span class="math display">\[ Gain(D, a) = Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v\rvert}{\lvert D \rvert}Ent(D^v)\]</span></p>
+<p>3.信息增益率 <span class="math display">\[Gain\_ratio = \frac{Gain(D, a)}{IV(a)}\]</span> <span class="math display">\[IV(a) = -\sum_{v=1}^{V}\frac{|D^v|}{|D|}log_2\frac{|D^v|}{|D|}\]</span> 4.基尼系数 <span class="math display">\[Gini(D)=\sum_{k=1}^{|\mathcal{Y}|}\sum_{k^{`} \neq k}p_k p_{k^`}\]</span> <span class="math display">\[Gini\_index(D,a) = \sum_{v=1}^{V}\frac{|D^v|}{|D|}Gini(D^v)\]</span></p>
 
           
         
@@ -649,20 +673,23 @@ Output: [1]
       
         
           
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><strong>问题描述</strong></h2><p>Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
+            <h2 id="问题描述"><strong>问题描述</strong></h2>
+<p>Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
 <p>Example 1:</p>
 <pre><code>Input: [3,2,1,5,6,4] and k = 2
-Output: 5
-</code></pre><p>Example 2:</p>
+Output: 5</code></pre>
+<p>Example 2:</p>
 <pre><code>Input: [3,2,3,1,2,4,5,5,6] and k = 4
-Output: 4
-</code></pre><p>Note:</p>
+Output: 4</code></pre>
+<p>Note:</p>
 <ul>
-<li>You may assume k is always valid, 1 ≤ k ≤ array’s length.</li>
+<li>You may assume k is always valid, 1 ≤ k ≤ array's length.</li>
 </ul>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a><strong>解题思路</strong></h2><p>堆排序，建堆O(logn)，取前k个，总时间复杂度O(klogn)。</p>
+<h2 id="解题思路"><strong>解题思路</strong></h2>
+<p>堆排序，建堆O(logn)，取前k个，总时间复杂度O(klogn)。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findKthLargest</span><span class="params">(self, nums: List[int], k: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">import</span> heapq</span><br><span class="line">        <span class="keyword">return</span> heapq.nlargest(k, nums)[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a><strong>进阶</strong></h2><p>快排方法，将比pivot小的移动到pivot左边大的移动到右边，如果结束后pivot位于第k个则pivot即为答案。如果大于k则从pivot左边找，小于则从右边找。</p>
+<h2 id="进阶"><strong>进阶</strong></h2>
+<p>快排方法，将比pivot小的移动到pivot左边大的移动到右边，如果结束后pivot位于第k个则pivot即为答案。如果大于k则从pivot左边找，小于则从右边找。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findKthLargest</span><span class="params">(self, nums: List[int], k: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">return</span> self.partition( <span class="number">0</span>, len(nums) - <span class="number">1</span>, nums, len(nums) - k)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(self, l, r, nums, k)</span>:</span></span><br><span class="line"></span><br><span class="line">        pivoti = random.randint(l, r)</span><br><span class="line">        pivot = nums[pivoti]</span><br><span class="line">        nums[pivoti], nums[r] = nums[r], nums[pivoti]</span><br><span class="line"></span><br><span class="line">        L = l</span><br><span class="line">        R = r - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> L &lt;= R:</span><br><span class="line">            <span class="keyword">while</span> nums[L] &lt; pivot:</span><br><span class="line">                L += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> nums[R] &gt; pivot:</span><br><span class="line">                R -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> L &lt;= R:</span><br><span class="line">                nums[L], nums[R] = nums[R], nums[L]</span><br><span class="line">                L += <span class="number">1</span></span><br><span class="line">                R -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        nums[L], nums[r] = nums[r], nums[L]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> L == k:</span><br><span class="line">            <span class="keyword">return</span> nums[L]</span><br><span class="line">        <span class="keyword">elif</span> L &gt; k:</span><br><span class="line">            <span class="keyword">return</span> self.partition(l, L - <span class="number">1</span>, nums, k)</span><br><span class="line">        <span class="keyword">elif</span> L &lt; k:</span><br><span class="line">            <span class="keyword">return</span> self.partition(L + <span class="number">1</span>, r,  nums, k)</span><br></pre></td></tr></table></figure>
 
           
@@ -805,12 +832,15 @@ Output: 4
       
         
           
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><strong>问题描述</strong></h2><p>Given a 2D board and a word, find if the word exists in the grid.</p>
-<p>The word can be constructed from letters of sequentially adjacent cell, where “adjacent” cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
+            <h2 id="问题描述"><strong>问题描述</strong></h2>
+<p>Given a 2D board and a word, find if the word exists in the grid.</p>
+<p>The word can be constructed from letters of sequentially adjacent cell, where &quot;adjacent&quot; cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
 <p>Example:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">board =</span><br><span class="line">[</span><br><span class="line">  [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'E'</span>],</span><br><span class="line">  [<span class="string">'S'</span>,<span class="string">'F'</span>,<span class="string">'C'</span>,<span class="string">'S'</span>],</span><br><span class="line">  [<span class="string">'A'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>,<span class="string">'E'</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">Given word = <span class="string">"ABCCED"</span>, <span class="keyword">return</span> true.</span><br><span class="line">Given word = <span class="string">"SEE"</span>, <span class="keyword">return</span> true.</span><br><span class="line">Given word = <span class="string">"ABCB"</span>, <span class="keyword">return</span> false.</span><br></pre></td></tr></table></figure>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a><strong>解题思路</strong></h2><p>回朔法，从board中每个元素出发遍历周围的四个元素，查看是否能组成部分答案，若能，则继续从该元素出发进行查找。</p>
+<h2 id="解题思路"><strong>解题思路</strong></h2>
+<p>回朔法，从board中每个元素出发遍历周围的四个元素，查看是否能组成部分答案，若能，则继续从该元素出发进行查找。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">exist</span><span class="params">(self, board: List[List[str]], word: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(board, x, y, word, i)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> i == len(word):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">if</span> x &lt; <span class="number">0</span> <span class="keyword">or</span> y &lt; <span class="number">0</span> <span class="keyword">or</span> x == len(board) <span class="keyword">or</span> y == len(board[<span class="number">0</span>]) <span class="keyword">or</span> board[x][y] != word[i]:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">            tmp = board[x][y]</span><br><span class="line">            board[x][y] = <span class="string">"#"</span></span><br><span class="line">            exists = find(board, x+<span class="number">1</span>, y, word, i+<span class="number">1</span>) \</span><br><span class="line">                <span class="keyword">or</span> find(board, x, y+<span class="number">1</span>, word, i+<span class="number">1</span>) \</span><br><span class="line">                <span class="keyword">or</span> find(board, x<span class="number">-1</span>, y, word, i+<span class="number">1</span>) \</span><br><span class="line">                <span class="keyword">or</span> find(board, x, y<span class="number">-1</span>, word, i+<span class="number">1</span>)</span><br><span class="line">            board[x][y] = tmp</span><br><span class="line">            <span class="keyword">return</span> exists</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> board:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        h = len(board)</span><br><span class="line">        w = len(board[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(board)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(board[<span class="number">0</span>])):</span><br><span class="line">                <span class="keyword">if</span> find(board, i, j, word, <span class="number">0</span>):</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -951,22 +981,25 @@ Output: 4
       
         
           
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><strong>问题描述</strong></h2><p>A peak element is an element that is greater than its neighbors.</p>
+            <h2 id="问题描述"><strong>问题描述</strong></h2>
+<p>A peak element is an element that is greater than its neighbors.</p>
 <p>Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index.</p>
 <p>The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.</p>
 <p>You may imagine that nums[-1] = nums[n] = -∞.</p>
 <p>Example 1:</p>
 <pre><code>Input: nums = [1,2,3,1]
 Output: 2
-Explanation: 3 is a peak element and your function should return the index number 2.
-</code></pre><p>Example 2:</p>
+Explanation: 3 is a peak element and your function should return the index number 2.</code></pre>
+<p>Example 2:</p>
 <pre><code>Input: nums = [1,2,1,3,5,6,4]
 Output: 1 or 5
-Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.
-</code></pre><p>Note:</p>
+Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.</code></pre>
+<p>Note:</p>
 <p>Your solution should be in logarithmic complexity.</p>
-<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a><strong>解决思路</strong></h2><p>因为题目要求对数复杂度，而且是一个查找问题，直觉使用二分查找。与二分查找的不同在于对high重新赋值为mid而不是mid-1，因为我们希望mid在 <code>nums[mid] &gt; nums[mid+1]</code> 的同时再比较一次 <code>nums[mid-1] 和 nums[mid]</code></p>
+<h2 id="解决思路"><strong>解决思路</strong></h2>
+<p>因为题目要求对数复杂度，而且是一个查找问题，直觉使用二分查找。与二分查找的不同在于对high重新赋值为mid而不是mid-1，因为我们希望mid在 <code>nums[mid] &gt; nums[mid+1]</code> 的同时再比较一次 <code>nums[mid-1] 和 nums[mid]</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findPeakElement</span><span class="params">(self, nums: <span class="string">'List[int]'</span>)</span> -&gt; 'int':</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        low, high = <span class="number">0</span>, n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> low &lt; high:</span><br><span class="line">            mid = (low+high)//<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt; nums[mid+<span class="number">1</span>]:</span><br><span class="line">                low = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                high = mid</span><br><span class="line">        <span class="keyword">return</span> low</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -1107,9 +1140,12 @@ Explanation: Your function can return either index number 1 where the peak eleme
       
         
           
-            <h1 id="Linux-挂载多块大容量硬盘"><a href="#Linux-挂载多块大容量硬盘" class="headerlink" title="Linux 挂载多块大容量硬盘"></a>Linux 挂载多块大容量硬盘</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近实验室采购了十台服务器，每台服务器配备了4块4T机械硬盘，本文记录了硬盘的挂载过程，以及虚拟存储工具 mhddfs 的使用。</p>
+            <h1 id="linux-挂载多块大容量硬盘">Linux 挂载多块大容量硬盘</h1>
+<h2 id="前言">前言</h2>
+<p>最近实验室采购了十台服务器，每台服务器配备了4块4T机械硬盘，本文记录了硬盘的挂载过程，以及虚拟存储工具 mhddfs 的使用。</p>
 <p>4块机械硬盘分别为 /dev/sda, /dev/sdb, /dev/sdc, /dev/sdd.</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<h2 id="步骤">步骤</h2>
+<ul>
 <li>查看硬盘信息</li>
 <li>查看挂载信息</li>
 <li>分区命令</li>
@@ -1117,10 +1153,12 @@ Explanation: Your function can return either index number 1 where the peak eleme
 <li>开机自动挂载</li>
 <li>多硬盘合并挂载 mhddfs</li>
 </ul>
-<h2 id="查看硬盘信息"><a href="#查看硬盘信息" class="headerlink" title="查看硬盘信息"></a>查看硬盘信息</h2><p>可以使用 <code>fdisk</code> 命令，fdisk 命令可以观察硬盘实体使用情况。</p>
-<pre><code>$ sudo fdisk -lh
-</code></pre><p>通过命令可以看到目前系统中有哪些硬盘，以及它们各自的分区。</p>
-<h2 id="查看挂载信息"><a href="#查看挂载信息" class="headerlink" title="查看挂载信息"></a>查看挂载信息</h2><p>通过 <code>df</code>  命令可以查看硬盘的挂载信息。</p>
+<h2 id="查看硬盘信息">查看硬盘信息</h2>
+<p>可以使用 <code>fdisk</code> 命令，fdisk 命令可以观察硬盘实体使用情况。</p>
+<pre><code>$ sudo fdisk -lh</code></pre>
+<p>通过命令可以看到目前系统中有哪些硬盘，以及它们各自的分区。</p>
+<h2 id="查看挂载信息">查看挂载信息</h2>
+<p>通过 <code>df</code> 命令可以查看硬盘的挂载信息。</p>
 <pre><code>$ df -lh
 Filesystem                   Size  Used Avail Use% Mounted on
 udev                          32G     0   32G   0% /dev
@@ -1131,21 +1169,22 @@ tmpfs                        5.0M  4.0K  5.0M   1% /run/lock
 tmpfs                         32G     0   32G   0% /sys/fs/cgroup
 /dev/nvme0n1p2               473M  149M  301M  34% /boot
 /dev/nvme0n1p1               511M  3.6M  508M   1% /boot/efi
-tmpfs                        6.3G     0  6.3G   0% /run/user/1000
-</code></pre><p>可以看到目前系统中仅挂载了一块固态硬盘。</p>
-<h2 id="分区命令"><a href="#分区命令" class="headerlink" title="分区命令"></a>分区命令</h2><p><code>fdisk</code> 命令不仅可以用于观察硬盘实体使用情况，也可以对硬盘进行分区。但 <code>fdisk</code> 命令进行分区最多仅支持2T容量。所以对于4T硬盘，可以使用 <code>parted</code> 命令进行分区。</p>
+tmpfs                        6.3G     0  6.3G   0% /run/user/1000</code></pre>
+<p>可以看到目前系统中仅挂载了一块固态硬盘。</p>
+<h2 id="分区命令">分区命令</h2>
+<p><code>fdisk</code> 命令不仅可以用于观察硬盘实体使用情况，也可以对硬盘进行分区。但 <code>fdisk</code> 命令进行分区最多仅支持2T容量。所以对于4T硬盘，可以使用 <code>parted</code> 命令进行分区。</p>
 <p><code>parted</code> 命令是由GNU组织开发的一款功能强大的磁盘分区和分区大小调整工具，与 <code>fdisk</code> 不同，它支持调整分区的大小。作为一种设计用于Linux的工具，它没有构建成处理与 <code>fdisk</code> 关联的多种分区类型，但是，它可以处理最常见的分区格式，包括：ext2、ext3、fat16、fat32、NTFS、ReiserFS、JFS、XFS、UFS、HFS以及Linux交换分区。</p>
 <pre><code>$ sudo parted /dev/sda
 GNU Parted 3.2
 Using /dev/sda
-Welcome to GNU Parted! Type &apos;help&apos; to view a list of commands.
+Welcome to GNU Parted! Type &#39;help&#39; to view a list of commands.
 (parted) mklabel gpt
 (parted) unit TB
 (parted) mkpart primary 0 4
 (parted) p
 GNU Parted 3.2
 Using /dev/sda
-Welcome to GNU Parted! Type &apos;help&apos; to view a list of commands.
+Welcome to GNU Parted! Type &#39;help&#39; to view a list of commands.
 Model: ATA ST4000NM0035-1V4 (scsi)
 Disk /dev/sda: 4001GB
 Sector size (logical/physical): 512B/512B
@@ -1153,10 +1192,12 @@ Partition Table: gpt
 Disk Flags:
 
 Number  Start   End     Size    File system  Name     Flags
-1      1049kB  4001GB  4001GB               primary
-</code></pre><h2 id="格式化分区"><a href="#格式化分区" class="headerlink" title="格式化分区"></a>格式化分区</h2><p>使用 <code>mkfs</code> 命令，将创建好的分区格式化为 ext4 格式。</p>
-<pre><code>$ sudo mkfs.ext4 /dev/sda1
-</code></pre><h2 id="开机自动挂载"><a href="#开机自动挂载" class="headerlink" title="开机自动挂载"></a>开机自动挂载</h2><p>通过 <code>blkid</code> 命令查看硬盘UUID</p>
+1      1049kB  4001GB  4001GB               primary</code></pre>
+<h2 id="格式化分区">格式化分区</h2>
+<p>使用 <code>mkfs</code> 命令，将创建好的分区格式化为 ext4 格式。</p>
+<pre><code>$ sudo mkfs.ext4 /dev/sda1</code></pre>
+<h2 id="开机自动挂载">开机自动挂载</h2>
+<p>通过 <code>blkid</code> 命令查看硬盘UUID</p>
 <pre><code>$ sudo blkid
 /dev/nvme0n1p1: UUID=&quot;6062-5002&quot; TYPE=&quot;vfat&quot; PARTUUID=&quot;23340a62-728f-4a13-855d-12783a6745d9&quot;
 /dev/nvme0n1p2: UUID=&quot;058309c1-a4f4-42d4-a011-9c59f331d327&quot; TYPE=&quot;ext2&quot; PARTUUID=&quot;c3b8246a-4753-414d-be15-1dd85840a949&quot;
@@ -1167,20 +1208,21 @@ Number  Start   End     Size    File system  Name     Flags
 /dev/sdc1: UUID=&quot;ade474c4-e8b2-4cc6-804d-802a283f164d&quot; TYPE=&quot;ext4&quot; PARTLABEL=&quot;primary&quot; PARTUUID=&quot;2885a317-a2b4-4d0c-aebb-97c6fb8c56e3&quot;
 /dev/sdd1: UUID=&quot;ce9dda21-86ac-4c6b-aac3-5d464d348e52&quot; TYPE=&quot;ext4&quot; PARTLABEL=&quot;primary&quot; PARTUUID=&quot;f48c33d8-3170-4802-bab5-ee1e0add763c&quot;
 /dev/mapper/ubuntu--vg-swap_1: UUID=&quot;4f617909-ed55-45ba-85ce-b1d211b44fca&quot; TYPE=&quot;swap&quot;
-/dev/nvme0n1: PTUUID=&quot;2fff60a6-1c9d-43f2-9b4f-182dced404e2&quot; PTTYPE=&quot;gpt&quot;
-</code></pre><p>修改 /etc/fstab 文件，加入表项</p>
-<pre><code>UUID= /mnt/A ext4 defaults 0 2
-</code></pre><p>将挂载硬盘的UUID填入。在相应位置创建挂载点（/mnt/A）并修改权限。<br>使用命令 <code>mount</code> 挂载硬盘</p>
-<pre><code>$ sudo mount /dev/sda1
-</code></pre><h2 id="多硬盘合并挂载-mhddfs"><a href="#多硬盘合并挂载-mhddfs" class="headerlink" title="多硬盘合并挂载 mhddfs"></a>多硬盘合并挂载 <code>mhddfs</code></h2><p>现在已经将4块硬盘都挂载在了相应的文件夹下 (/mnt/A /mnt/B /mnt/C /mnt/D)<br>但是由于过多的挂载点导致文件分散在不同的目录下，对于访问文件十分不利。所以可以使用 <code>mhddfs</code> 将多个硬盘挂载在一个路径下。也称作 Linux 分区合并，即 Linux 挂载点合并。</p>
+/dev/nvme0n1: PTUUID=&quot;2fff60a6-1c9d-43f2-9b4f-182dced404e2&quot; PTTYPE=&quot;gpt&quot;</code></pre>
+<p>修改 /etc/fstab 文件，加入表项</p>
+<pre><code>UUID= /mnt/A ext4 defaults 0 2</code></pre>
+<p>将挂载硬盘的UUID填入。在相应位置创建挂载点（/mnt/A）并修改权限。 使用命令 <code>mount</code> 挂载硬盘</p>
+<pre><code>$ sudo mount /dev/sda1</code></pre>
+<h2 id="多硬盘合并挂载-mhddfs">多硬盘合并挂载 <code>mhddfs</code></h2>
+<p>现在已经将4块硬盘都挂载在了相应的文件夹下 (/mnt/A /mnt/B /mnt/C /mnt/D) 但是由于过多的挂载点导致文件分散在不同的目录下，对于访问文件十分不利。所以可以使用 <code>mhddfs</code> 将多个硬盘挂载在一个路径下。也称作 Linux 分区合并，即 Linux 挂载点合并。</p>
 <p><code>mhddfs</code> 是一个 FUSE 系统模块，它可以将多个 Linux 分区(挂载点)或硬盘组合成一个虚拟驱动器。这样我们就可以将文件丢到 <code>mhddfs</code> 创建的虚拟驱动器中，它会自动将文件分布到不同的挂载点中，而用户看起来就像是放到了一个统一的路径。</p>
 <p><code>mhddfs</code> 安装</p>
-<pre><code>$ sudo apt install mhddfs
-</code></pre><p>创建挂载点并修改权限后，使用命令</p>
-<pre><code>$ sudo mhddfs /mnt/A,/mnt/B,/mnt/C,/mnt/D /extend -o allow_other
-</code></pre><p>在 /etc/fstab 中写入</p>
-<pre><code>mhddfs#/mnt/A,/mnt/B,/mnt/C,/mnt/D /extend fuse defaults,allow_other 0 0
-</code></pre><p>以实现开机自动挂载</p>
+<pre><code>$ sudo apt install mhddfs</code></pre>
+<p>创建挂载点并修改权限后，使用命令</p>
+<pre><code>$ sudo mhddfs /mnt/A,/mnt/B,/mnt/C,/mnt/D /extend -o allow_other</code></pre>
+<p>在 /etc/fstab 中写入</p>
+<pre><code>mhddfs#/mnt/A,/mnt/B,/mnt/C,/mnt/D /extend fuse defaults,allow_other 0 0</code></pre>
+<p>以实现开机自动挂载</p>
 
           
         
@@ -1322,14 +1364,21 @@ Number  Start   End     Size    File system  Name     Flags
       
         
           
-            <h1 id="使用samba共享文件"><a href="#使用samba共享文件" class="headerlink" title="使用samba共享文件"></a>使用samba共享文件</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近因为很多原因需要共享一个 Ubuntu 系统下的文件夹供他人访问，于是决定使用 samba 。</p>
-<h2 id="关于samba"><a href="#关于samba" class="headerlink" title="关于samba"></a>关于samba</h2><p>Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。通过设置“NetBIOS over TCP/IP”使得Samba不但能与局域网络主机分享资源，还能与全世界的电脑分享资源。</p>
-<p>SMB（Server Message Block）通信协议是微软（Microsoft）和英特尔(Intel)在1987年制定的协议，主要是作为Microsoft网络的通讯协议。SMB 是在会话层（session layer）和表示层（presentation layer）以及小部分应用层（application layer）的协议。<br>SMB使用了NetBIOS的应用程序接口 （Application Program Interface，简称API）。另外，它是一个开放性的协议，允许了协议扩展——使得它变得更大而且复杂；大约有65个最上层的作业，而每个作业都超过120个函数，甚至Windows NT也没有全部支持到，最近微软又把 SMB 改名为 CIFS（Common Internet File System），并且加入了许多新的特色。</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><pre><code>Ubuntu 16.04
-4.13.0-43-generic
-</code></pre><h2 id="Samba-安装"><a href="#Samba-安装" class="headerlink" title="Samba 安装"></a>Samba 安装</h2><pre><code>$ sudo apt install samba
-</code></pre><h2 id="Samba-配置"><a href="#Samba-配置" class="headerlink" title="Samba 配置"></a>Samba 配置</h2><p>Samba 服务的配置文件位于 /etc/samba/smb.conf</p>
-<h4 id="全局文件配置参数"><a href="#全局文件配置参数" class="headerlink" title="全局文件配置参数"></a>全局文件配置参数</h4><pre><code>[global]
+            <h1 id="使用samba共享文件">使用samba共享文件</h1>
+<h2 id="前言">前言</h2>
+<p>最近因为很多原因需要共享一个 Ubuntu 系统下的文件夹供他人访问，于是决定使用 samba 。</p>
+<h2 id="关于samba">关于samba</h2>
+<p>Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。通过设置“NetBIOS over TCP/IP”使得Samba不但能与局域网络主机分享资源，还能与全世界的电脑分享资源。</p>
+<p>SMB（Server Message Block）通信协议是微软（Microsoft）和英特尔(Intel)在1987年制定的协议，主要是作为Microsoft网络的通讯协议。SMB 是在会话层（session layer）和表示层（presentation layer）以及小部分应用层（application layer）的协议。 SMB使用了NetBIOS的应用程序接口 （Application Program Interface，简称API）。另外，它是一个开放性的协议，允许了协议扩展——使得它变得更大而且复杂；大约有65个最上层的作业，而每个作业都超过120个函数，甚至Windows NT也没有全部支持到，最近微软又把 SMB 改名为 CIFS（Common Internet File System），并且加入了许多新的特色。</p>
+<h2 id="环境">环境</h2>
+<pre><code>Ubuntu 16.04
+4.13.0-43-generic</code></pre>
+<h2 id="samba-安装">Samba 安装</h2>
+<pre><code>$ sudo apt install samba</code></pre>
+<h2 id="samba-配置">Samba 配置</h2>
+<p>Samba 服务的配置文件位于 /etc/samba/smb.conf</p>
+<h4 id="全局文件配置参数">全局文件配置参数</h4>
+<pre><code>[global]
     config file = /etc/samba/smb.conf.%U       #可以让你使用另一个配置文件来覆盖缺省的配置文件。如果文件 不存在，则该项无效。
     workgroup = WORKGROUP                      #工作组名称
     server string = Samba Server Version %v    #主机的简易说明
@@ -1340,8 +1389,9 @@ Number  Start   End     Size    File system  Name     Flags
     hosts deny = 192.168.12.0/255.255.255.0    #设置不允许连接到samba服务器的客户端，默认注释
     log level = 1                              #日志文件安全级别，0~10级别，默认0
     log file = /var/log/samba/%m               #产生日志文件的命名，默认以访问者IP地址命名
-    max log size = 50                          #日志文件最大容量50，默认50，单位为KB，0表示不限制
-</code></pre><h4 id="自定义共享文件配置参数"><a href="#自定义共享文件配置参数" class="headerlink" title="自定义共享文件配置参数"></a>自定义共享文件配置参数</h4><pre><code>[share]                                        # 自定义共享名
+    max log size = 50                          #日志文件最大容量50，默认50，单位为KB，0表示不限制</code></pre>
+<h4 id="自定义共享文件配置参数">自定义共享文件配置参数</h4>
+<pre><code>[share]                                        # 自定义共享名
     comment = Home Directories                 # 描述符，是给系统管理员看的
 
     path = /tmp                                # 共享的路径
@@ -1370,13 +1420,15 @@ Number  Start   End     Size    File system  Name     Flags
     write list = user1 user2 user3             # 设置可对文件进行写操作的用户
     admin users = user1                        # 设置共享目录的管理员，具有完全权限
     force create mode = 0775                   # Windows 与 Linux 具有不同的文件和文件夹默认权限，Windows下新建的文件是
-    force directory mode = 0775                # 可执行的，所以必须强制设定其权限
-</code></pre><h4 id="关于安全级别"><a href="#关于安全级别" class="headerlink" title="关于安全级别"></a>关于安全级别</h4><pre><code>share ：表示匿名用户，不需要 samba 账户就可登陆 samba 服务器
+    force directory mode = 0775                # 可执行的，所以必须强制设定其权限</code></pre>
+<h4 id="关于安全级别">关于安全级别</h4>
+<pre><code>share ：表示匿名用户，不需要 samba 账户就可登陆 samba 服务器
 user ：系统账户要先添加进 samba 库然后变成 samba 用户，使用 samba 用户来登陆，简单来讲就是需要使用用户密码登录
 server ：由另外一台 samba 服务器来对用户进行身份验证
 domain ：把 samba 服务器加入到 NT 域，由 NT 的域控制器来进行身份验证
-ADS ：（Active Directory Service，活动目录服务），是 samba3.0 中新增的身份验证方式，采用 ADS 验证方式，samba 服务器集成到活动目录中
-</code></pre><h4 id="实用的配置"><a href="#实用的配置" class="headerlink" title="实用的配置"></a>实用的配置</h4><p>可以用此配置共享一个服务器上的所有文件，使浏览数据更加方便。<em>但这样做会产生一定的安全风险。</em></p>
+ADS ：（Active Directory Service，活动目录服务），是 samba3.0 中新增的身份验证方式，采用 ADS 验证方式，samba 服务器集成到活动目录中</code></pre>
+<h4 id="实用的配置">实用的配置</h4>
+<p>可以用此配置共享一个服务器上的所有文件，使浏览数据更加方便。<em>但这样做会产生一定的安全风险。</em></p>
 <pre><code>[share]
     path = /
     public = yes
@@ -1386,15 +1438,19 @@ ADS ：（Active Directory Service，活动目录服务），是 samba3.0 中新
     force create mode = 0775
     directory mask = 0775
     force directory mode = 0775
-    available = yes
-</code></pre><h4 id="设置登录密码"><a href="#设置登录密码" class="headerlink" title="设置登录密码"></a>设置登录密码</h4><pre><code>$ sudo touch /etc/samba/smbpasswd               
-$ sudo smbpasswd -a                             # 根据设置的valid user，设置用户密码。
-</code></pre><h4 id="重启-Samba-服务使配置生效"><a href="#重启-Samba-服务使配置生效" class="headerlink" title="重启 Samba 服务使配置生效"></a>重启 Samba 服务使配置生效</h4><pre><code>$ sudo /etc/init.d/samba restart
-</code></pre><h4 id="通过-Windows-连接"><a href="#通过-Windows-连接" class="headerlink" title="通过 Windows 连接"></a>通过 Windows 连接</h4><p>在文件资源管理器输入</p>
-<pre><code>\\(ip)
-</code></pre><h4 id="通过-Linux-连接"><a href="#通过-Linux-连接" class="headerlink" title="通过 Linux 连接"></a>通过 Linux 连接</h4><p>在 connect to server，输入</p>
-<pre><code>smb://(ip)
-</code></pre>
+    available = yes</code></pre>
+<h4 id="设置登录密码">设置登录密码</h4>
+<pre><code>$ sudo touch /etc/samba/smbpasswd               
+$ sudo smbpasswd -a                             # 根据设置的valid user，设置用户密码。</code></pre>
+<h4 id="重启-samba-服务使配置生效">重启 Samba 服务使配置生效</h4>
+<pre><code>$ sudo /etc/init.d/samba restart</code></pre>
+<h4 id="通过-windows-连接">通过 Windows 连接</h4>
+<p>在文件资源管理器输入</p>
+<pre><code>\\(ip)</code></pre>
+<h4 id="通过-linux-连接">通过 Linux 连接</h4>
+<p>在 connect to server，输入</p>
+<pre><code>smb://(ip)</code></pre>
+
           
         
       
@@ -1535,21 +1591,25 @@ $ sudo smbpasswd -a                             # 根据设置的valid user，�
       
         
           
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><strong>问题描述</strong></h2><p>Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
+            <h2 id="问题描述"><strong>问题描述</strong></h2>
+<p>Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
 <p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.</p>
-<p>Note: You are not suppose to use the library’s sort function for this problem.</p>
+<p>Note: You are not suppose to use the library's sort function for this problem.</p>
 <p>Example:</p>
 <pre><code>Input: [2,0,2,1,1,0]
-Output: [0,0,1,1,2,2]
-</code></pre><p>Follow up:</p>
+Output: [0,0,1,1,2,2]</code></pre>
+<p>Follow up:</p>
 <ul>
 <li>A rather straight forward solution is a two-pass algorithm using counting sort.</li>
-<li>First, iterate the array counting number of 0’s, 1’s, and 2’s, then overwrite array with total number of 0’s, then 1’s and followed by 2’s.<br>Could you come up with a one-pass algorithm using only constant space?</li>
+<li>First, iterate the array counting number of 0's, 1's, and 2's, then overwrite array with total number of 0's, then 1's and followed by 2's. Could you come up with a one-pass algorithm using only constant space?</li>
 </ul>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a><strong>解题思路</strong></h2><p>基本按照计数排序的思路，先遍历统计0、1、2的个数。根据个数重新对数组赋值。</p>
+<h2 id="解题思路"><strong>解题思路</strong></h2>
+<p>基本按照计数排序的思路，先遍历统计0、1、2的个数。根据个数重新对数组赋值。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortColors</span><span class="params">(self, nums: List[int])</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        count = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            count[i] += <span class="number">1</span></span><br><span class="line">        print(count)</span><br><span class="line">        print(nums[:count[i]])</span><br><span class="line">        nums[:count[<span class="number">0</span>]] = [<span class="number">0</span>]*count[<span class="number">0</span>]</span><br><span class="line">        nums[count[<span class="number">0</span>]:count[<span class="number">1</span>]+count[<span class="number">0</span>]] = [<span class="number">1</span>]*count[<span class="number">1</span>]</span><br><span class="line">        nums[count[<span class="number">1</span>]+count[<span class="number">0</span>]:] = [<span class="number">2</span>]*count[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="进阶思路"><a href="#进阶思路" class="headerlink" title="进阶思路"></a><strong>进阶思路</strong></h2><p>上述做法貌似需要 $O(n)$ 的额外存储空间，如果 $O(1)$ 来做又会导致遍历两次。因此可以考虑类似快速排序的做法，两个指针分别指向头尾，一个指针从左到右移动。。将遇到的2移动到最右边，遇到的0移动到最左边。</p>
+<h2 id="进阶思路"><strong>进阶思路</strong></h2>
+<p>上述做法貌似需要 <span class="math inline">\(O(n)\)</span> 的额外存储空间，如果 <span class="math inline">\(O(1)\)</span> 来做又会导致遍历两次。因此可以考虑类似快速排序的做法，两个指针分别指向头尾，一个指针从左到右移动。。将遇到的2移动到最右边，遇到的0移动到最左边。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortColors</span><span class="params">(self, nums: <span class="string">'List[int]'</span>)</span> -&gt; '<span class="keyword">None</span>':</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        r = len(nums) - <span class="number">1</span></span><br><span class="line">        i=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i&lt;=r:</span><br><span class="line">            <span class="keyword">if</span> nums[i] == <span class="number">2</span> <span class="keyword">and</span> i&lt;r:</span><br><span class="line">                nums[i], nums[r] = nums[r], nums[i]</span><br><span class="line">                r-=<span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[i] == <span class="number">0</span> <span class="keyword">and</span> i&gt;l:</span><br><span class="line">                nums[i], nums[l] = nums[l], nums[i]</span><br><span class="line">                l+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                i+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -1690,17 +1750,20 @@ Output: [0,0,1,1,2,2]
       
         
           
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><strong>问题描述</strong></h2><p>Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.</p>
-<p>Your algorithm’s runtime complexity must be in the order of $O(log n)$.</p>
+            <h2 id="问题描述"><strong>问题描述</strong></h2>
+<p>Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.</p>
+<p>Your algorithm's runtime complexity must be in the order of <span class="math inline">\(O(log n)\)</span>.</p>
 <p>If the target is not found in the array, return [-1, -1].</p>
 <p>Example 1:</p>
 <pre><code>Input: nums = [5,7,7,8,8,10], target = 8
-Output: [3,4]
-</code></pre><p>Example 2:</p>
+Output: [3,4]</code></pre>
+<p>Example 2:</p>
 <pre><code>Input: nums = [5,7,7,8,8,10], target = 6
-Output: [-1,-1]
-</code></pre><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a><strong>解题思路</strong></h2><p>对数时间复杂度，优先考虑二分查找，先找出目标数的左界。通常做法，二分查找对于右指针的更新改为mid而不是mid-1。然后查找target的右界，同样使用二分查找。</p>
+Output: [-1,-1]</code></pre>
+<h2 id="解题思路"><strong>解题思路</strong></h2>
+<p>对数时间复杂度，优先考虑二分查找，先找出目标数的左界。通常做法，二分查找对于右指针的更新改为mid而不是mid-1。然后查找target的右界，同样使用二分查找。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchRange</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; List[int]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">-1</span>,<span class="number">-1</span>]</span><br><span class="line">        n = len(nums)</span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        r = n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> l &lt; r:</span><br><span class="line">            m = (l + r) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[m] &lt; target:</span><br><span class="line">                l = m + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 对于有界的更新进行改动，这样可以保证找到的m一定是target左界</span></span><br><span class="line">                r = m</span><br><span class="line">        <span class="keyword">if</span> nums[l] != target: <span class="keyword">return</span> <span class="number">-1</span>, <span class="number">-1</span></span><br><span class="line">        left = l</span><br><span class="line">        l, r = left, n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> l &lt; r:</span><br><span class="line">            m = (l+r) // <span class="number">2</span> + <span class="number">1</span></span><br><span class="line">            <span class="comment"># 对条件进行改动，使其找到的是第一个非target，即为右界</span></span><br><span class="line">            <span class="keyword">if</span> nums[m] == target:</span><br><span class="line">                l = m</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                r = m<span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> left, l</span><br></pre></td></tr></table></figure>
+
           
         
       
