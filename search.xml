@@ -24,6 +24,10 @@
             
             <tag> Leetcode </tag>
             
+            <tag> Medium </tag>
+            
+            <tag> Heap </tag>
+            
         </tags>
       
     </entry>
@@ -31,16 +35,16 @@
     
     
     <entry>
-      <title>机器学习算法笔记-决策树</title>
-      <link href="/2018/07/10/Decition_tree/"/>
-      <url>/2018/07/10/Decition_tree/</url>
+      <title>Leetcode 240. Search a 2D Matrix II</title>
+      <link href="/2018/06/24/leetcode240/"/>
+      <url>/2018/06/24/leetcode240/</url>
       
-        <content type="html"><![CDATA[<h1 id="机器学习算法-决策树">机器学习算法-决策树</h1><h2 id="前言">前言</h2><p>决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。</p><h2 id="决策树基本算法">决策树基本算法</h2><p>输入:</p><p>训练集 <span class="math inline">\(D\)</span> = <span class="math inline">\(\{(x_1, y_1), (x_2, y_2), ..., (x_m, y_m)\}\)</span><br>属性集 <span class="math inline">\(A\)</span> = <span class="math inline">\(\{(a_1, a_2, ..., a_d)\}\)</span></p><p>过程：函数 <span class="math inline">\(TreeGenerate(G, A)\)</span><br>if <span class="math inline">\(D\)</span> 中的样本全属于同一类别 <span class="math inline">\(C\)</span> then<br>  将node标记为 <span class="math inline">\(C\)</span> 类叶节点; return<br>end if<br>if <span class="math inline">\(A\)</span> = <span class="math inline">\(\emptyset\)</span> OR <span class="math inline">\(D\)</span> 中的样本在 <span class="math inline">\(A\)</span> 上的取值相同 then<br>  将node标记为叶节点，类别为 <span class="math inline">\(D\)</span> 中样本最多的一类; return<br>end if<br>从 <span class="math inline">\(A\)</span> 中选择最优化分属性 <span class="math inline">\(a_*\)</span><br>for <span class="math inline">\(a_*\)</span> 的每一个取值 <span class="math inline">\(a_{*}^{v}\)</span> do<br>  为node生成一个分支；令 <span class="math inline">\(D_v\)</span> 表示 <span class="math inline">\(D\)</span> 中在 <span class="math inline">\(a_*\)</span> 上取值为 <span class="math inline">\(a_{*}^{v}\)</span> 的样本子集;<br>  if <span class="math inline">\(D_v\)</span> 为空 then<br>   将分支结点标记为叶节点，其类别标记为 <span class="math inline">\(D\)</span> 中样本最多的类; return<br>  else<br>  以 <span class="math inline">\(TreeGenerate(D_v, A \setminus\{a_*\})\)</span> 为分支结点<br> end if<br>end for</p><h2 id="属性划分">属性划分</h2><p>假定当前样本集合 <span class="math inline">\(D\)</span> 中第 <span class="math inline">\(k\)</span> 类样本所占比例为 <span class="math inline">\(p_k\)</span> (<span class="math inline">\(k\)</span> = 1,2, ... ,<span class="math inline">\(\mathcal{|Y|}\)</span>)</p><p>1.信息熵 <span class="math display">\[Ent(D) = - \sum_{k=1}^{|\mathcal{Y}|}p_klog_2p_k\]</span> 2.信息增益 <span class="math display">\[ Gain(D, a) = Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v\rvert}{\lvert D \rvert}Ent(D^v)\]</span></p><p>3.信息增益率 <span class="math display">\[Gain\_ratio = \frac{Gain(D, a)}{IV(a)}\]</span> <span class="math display">\[IV(a) = -\sum_{v=1}^{V}\frac{|D^v|}{|D|}log_2\frac{|D^v|}{|D|}\]</span> 4.基尼系数 <span class="math display">\[Gini(D)=\sum_{k=1}^{|\mathcal{Y}|}\sum_{k^{`} \neq k}p_k p_{k^`}\]</span> <span class="math display">\[Gini\_index(D,a) = \sum_{v=1}^{V}\frac{|D^v|}{|D|}Gini(D^v)\]</span></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="问题描述"><strong>问题描述</strong></h2><p>Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</p><ul><li>Integers in each row are sorted in ascending from left to right.</li><li>Integers in each column are sorted in ascending from top to bottom. Example:</li></ul><p>Consider the following matrix:</p><pre><code>[    [1,   4,  7, 11, 15],    [2,   5,  8, 12, 19],    [3,   6,  9, 16, 22],    [10, 13, 14, 17, 24],    [18, 21, 23, 26, 30]]</code></pre><p>Given <code>target</code> = 5, return <code>true</code>.</p><p>Given <code>target</code> = 20, return <code>false</code>.</p><h2 id="解题思路"><strong>解题思路</strong></h2><p>先找到 <code>target</code> 可能在的行，然后在行内使用二分查找。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="keyword">not</span> matrix[<span class="number">0</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">binary_search</span><span class="params">(nums, target)</span>:</span></span><br><span class="line">            l = <span class="number">0</span></span><br><span class="line">            r = len(nums) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span>(l &lt;= r):</span><br><span class="line">                m = (l + r) // <span class="number">2</span></span><br><span class="line">                <span class="keyword">if</span> nums[m] == target:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">                <span class="keyword">elif</span> nums[m] &lt; target:</span><br><span class="line">                    l = m + <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    r = m - <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        r = len(matrix)</span><br><span class="line">        <span class="keyword">for</span> nums <span class="keyword">in</span> matrix:</span><br><span class="line">            <span class="keyword">if</span> nums[<span class="number">0</span>] &gt; target:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">            <span class="keyword">if</span> nums[<span class="number">-1</span>] &lt; target:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> binary_search(nums, target):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure><h2 id="进阶"><strong>进阶</strong></h2><p>对整个矩阵进行二分查找，或者进行分块儿查找。首先看整个矩阵 <code>((0, 0), (m-1, n-1))</code>，中点 <code>((m-1)//2, (n-1)//2)</code> 通过对比中点数据大小和target大小，确定target在哪个区域。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        m = len(matrix)</span><br><span class="line">        <span class="keyword">if</span> m == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        n = len(matrix[<span class="number">0</span>])</span><br><span class="line">        X = [(<span class="number">0</span>, <span class="number">0</span>, m - <span class="number">1</span>, n - <span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">while</span> X:</span><br><span class="line">            i, j, k, l = X.pop()</span><br><span class="line">            <span class="keyword">if</span> i &gt; k <span class="keyword">or</span> j &gt; l <span class="keyword">or</span> \</span><br><span class="line">                matrix[i][j] &gt; target <span class="keyword">or</span> matrix[k][l] &lt; target:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            p, q = (i + k)// <span class="number">2</span>, (j + l) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> matrix[p][q] == target:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">if</span> matrix[p][q] &lt; target:</span><br><span class="line">                X += [(p + <span class="number">1</span>, j, k, q), (<span class="number">0</span>, q + <span class="number">1</span>, k, l)]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                X += [(i, j, k, q - <span class="number">1</span>), (<span class="number">0</span>, q, p - <span class="number">1</span>, l)]</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure><h2 id="python耍赖做法"><strong>Python耍赖做法</strong></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> any(target <span class="keyword">in</span> row <span class="keyword">for</span> row <span class="keyword">in</span> matrix)</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
           
-          <category> Algorithm </category>
+          <category> Leetcode </category>
           
       </categories>
       
@@ -49,7 +53,11 @@
             
             <tag> Algorithm </tag>
             
-            <tag> Machine Learning </tag>
+            <tag> Leetcode </tag>
+            
+            <tag> Binary Search </tag>
+            
+            <tag> Medium </tag>
             
         </tags>
       
@@ -78,6 +86,14 @@
             
             <tag> Leetcode </tag>
             
+            <tag> Medium </tag>
+            
+            <tag> Heap </tag>
+            
+            <tag> Quick Sort </tag>
+            
+            <tag> Sort </tag>
+            
         </tags>
       
     </entry>
@@ -105,6 +121,10 @@
             
             <tag> Leetcode </tag>
             
+            <tag> Medium </tag>
+            
+            <tag> Back Trace </tag>
+            
         </tags>
       
     </entry>
@@ -131,6 +151,10 @@
             <tag> Algorithm </tag>
             
             <tag> Leetcode </tag>
+            
+            <tag> Binary Search </tag>
+            
+            <tag> Medium </tag>
             
         </tags>
       
@@ -215,6 +239,39 @@
             
             <tag> Leetcode </tag>
             
+            <tag> Medium </tag>
+            
+            <tag> Sort </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Leetcode 56. Merge Intervals</title>
+      <link href="/2018/05/24/leetcode56/"/>
+      <url>/2018/05/24/leetcode56/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题目描述"><strong>题目描述</strong></h2><p>Given a collection of intervals, merge all overlapping intervals.</p><p>Example 1:</p><pre><code>Input: [[1,3],[2,6],[8,10],[15,18]]Output: [[1,6],[8,10],[15,18]]Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].</code></pre><p>Example 2:</p><pre><code>Input: [[1,4],[4,5]]Output: [[1,5]]Explanation: Intervals [1,4] and [4,5] are considered overlapping.</code></pre><h2 id="解题思路"><strong>解题思路</strong></h2><p>将所有的interval按开始时间排序，检测是否重叠，若重叠，检测结束时间。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, intervals: List[List[int]])</span> -&gt; List[List[int]]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> intervals:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        <span class="keyword">if</span> len(intervals) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> intervals</span><br><span class="line">        intervals = sorted(intervals)</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> intervals:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> res <span class="keyword">or</span> res[<span class="number">-1</span>][<span class="number">1</span>] &lt; i[<span class="number">0</span>]:</span><br><span class="line">                res.append(i)</span><br><span class="line">            <span class="keyword">elif</span> res[<span class="number">-1</span>][<span class="number">1</span>] &lt; i[<span class="number">1</span>]:</span><br><span class="line">                res[<span class="number">-1</span>][<span class="number">1</span>] = i[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Algorithm </tag>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Medium </tag>
+            
         </tags>
       
     </entry>
@@ -241,6 +298,68 @@
             <tag> Algorithm </tag>
             
             <tag> Leetcode </tag>
+            
+            <tag> Binary Search </tag>
+            
+            <tag> Medium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Leetcode 33. Search in Rotated Sorted Array</title>
+      <link href="/2018/05/23/leetcode33/"/>
+      <url>/2018/05/23/leetcode33/</url>
+      
+        <content type="html"><![CDATA[<h2 id="问题描述"><strong>问题描述</strong></h2><p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p><p>(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).</p><p>You are given a target value to search. If found in the array return its index, otherwise return -1.</p><p>You may assume no duplicate exists in the array.</p><p>Your algorithm's runtime complexity must be in the order of O(log n).</p><p>Example 1:</p><pre><code>Input: nums = [4,5,6,7,0,1,2], target = 0Output: 4</code></pre><p>Example 2:</p><pre><code>Input: nums = [4,5,6,7,0,1,2], target = 3Output: -1</code></pre><h2 id="解题思路"><strong>解题思路</strong></h2><p>要求对数复杂度，首先考虑二分查找。先用二分查找找到最小值，然后再根据target所在区间进行二分查找。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        r = len(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> l &lt; r:</span><br><span class="line">            m = (l + r) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[m] &gt; nums[r]:</span><br><span class="line">                l = m+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                r = m</span><br><span class="line">        s = l</span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        r = len(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> nums[s] &lt;= target &lt;= nums[r]:</span><br><span class="line">            l = s</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            r = s</span><br><span class="line">        <span class="keyword">while</span>(l &lt;= r):</span><br><span class="line">            m = (l + r) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[m] == target:</span><br><span class="line">                <span class="keyword">return</span> m</span><br><span class="line">            <span class="keyword">elif</span> nums[m] &gt; target:</span><br><span class="line">                r = m - <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                l = m + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure><h2 id="进阶"><strong>进阶</strong></h2><p>可以考虑只进行一次二分查找。通过比较mid和r确定pivot点的大概位置。如果m大于r，且 target 在l与m之间，重新在 (l, m-1) 查找，若不是，则在 (m+1, r) 之间查找。若m小于r，当 target 在m与r之间则在 (m+1, r) 内进行查找，否则在 (l, m-1) 内进行查找。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">        l, r = <span class="number">0</span>, len(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> l &lt;= r:</span><br><span class="line">            m = (l + r) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[m] == target:</span><br><span class="line">                <span class="keyword">return</span> m</span><br><span class="line">            <span class="keyword">elif</span> nums[m] &gt; nums[r]:</span><br><span class="line">                <span class="keyword">if</span> nums[l] &lt;= target &lt;= nums[m]:</span><br><span class="line">                    r = m - <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    l = m + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> nums[m] &lt;= target &lt;= nums[r]:</span><br><span class="line">                    l = m + <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    r = m - <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="comment"># Time: O(log(N))</span></span><br><span class="line">        <span class="comment"># Space: O(1)</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Algorithm </tag>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Binary Search </tag>
+            
+            <tag> Medium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>机器学习算法笔记-决策树</title>
+      <link href="/2017/04/10/Decition_tree/"/>
+      <url>/2017/04/10/Decition_tree/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。</p><h2 id="决策树基本算法">决策树基本算法</h2><p>输入:<br>训练集 <span class="math inline">\(D\)</span> = <span class="math inline">\(\{(x_1, y_1), (x_2, y_2), ..., (x_m, y_m)\}\)</span><br>属性集 <span class="math inline">\(A\)</span> = <span class="math inline">\(\{(a_1, a_2, ..., a_d)\}\)</span></p><p>过程：函数 <span class="math inline">\(TreeGenerate(G, A)\)</span><br>if <span class="math inline">\(D\)</span> 中的样本全属于同一类别 <span class="math inline">\(C\)</span> then<br>  将node标记为 <span class="math inline">\(C\)</span> 类叶节点; return<br>end if<br>if <span class="math inline">\(A\)</span> = <span class="math inline">\(\emptyset\)</span> OR <span class="math inline">\(D\)</span> 中的样本在 <span class="math inline">\(A\)</span> 上的取值相同 then<br>  将node标记为叶节点，类别为 <span class="math inline">\(D\)</span> 中样本最多的一类; return<br>end if<br>从 <span class="math inline">\(A\)</span> 中选择最优化分属性 <span class="math inline">\(a_*\)</span><br>for <span class="math inline">\(a_*\)</span> 的每一个取值 <span class="math inline">\(a_{*}^{v}\)</span> do<br>  为node生成一个分支；令 <span class="math inline">\(D_v\)</span> 表示 <span class="math inline">\(D\)</span> 中在 <span class="math inline">\(a_*\)</span> 上取值为 <span class="math inline">\(a_{*}^{v}\)</span> 的样本子集;<br>  if <span class="math inline">\(D_v\)</span> 为空 then<br>   将分支结点标记为叶节点，其类别标记为 <span class="math inline">\(D\)</span> 中样本最多的类; return<br>  else<br>  以 <span class="math inline">\(TreeGenerate(D_v, A \setminus\{a_*\})\)</span> 为分支结点<br> end if<br>end for</p><h2 id="属性划分">属性划分</h2><p>假定当前样本集合 <span class="math inline">\(D\)</span> 中第 <span class="math inline">\(k\)</span> 类样本所占比例为 <span class="math inline">\(p_k\)</span> (<span class="math inline">\(k\)</span> = 1,2, ... ,<span class="math inline">\(\mathcal{|Y|}\)</span>)</p><p>1.信息熵 <span class="math display">\[Ent(D) = - \sum_{k=1}^{|\mathcal{Y}|}p_klog_2p_k\]</span> 2.信息增益 <span class="math display">\[ Gain(D, a) = Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v\rvert}{\lvert D \rvert}Ent(D^v)\]</span></p><p>3.信息增益率 <span class="math display">\[Gain\_ratio = \frac{Gain(D, a)}{IV(a)}\]</span> <span class="math display">\[IV(a) = -\sum_{v=1}^{V}\frac{|D^v|}{|D|}log_2\frac{|D^v|}{|D|}\]</span> 4.基尼系数 <span class="math display">\[Gini(D)=\sum_{k=1}^{|\mathcal{Y}|}\sum_{k^{`} \neq k}p_k p_{k^`}\]</span> <span class="math display">\[Gini\_index(D,a) = \sum_{v=1}^{V}\frac{|D^v|}{|D|}Gini(D^v)\]</span></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Algorithm </tag>
+            
+            <tag> Machine Learning </tag>
             
         </tags>
       

@@ -24,13 +24,6 @@
 
 
 
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
-
 
 
 
@@ -541,7 +534,7 @@ Output: [1]</code></pre>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/10/Decition_tree/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/24/leetcode240/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mors">
@@ -561,7 +554,7 @@ Output: [1]</code></pre>
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/07/10/Decition_tree/" class="post-title-link" itemprop="url">机器学习算法笔记-决策树</a>
+                <a href="/2018/06/24/leetcode240/" class="post-title-link" itemprop="url">Leetcode 240. Search a 2D Matrix II</a>
               
             
           </h1>
@@ -586,7 +579,7 @@ Output: [1]</code></pre>
                 
               
 
-              <time title="创建时间：2018-07-10 11:55:18" itemprop="dateCreated datePublished" datetime="2018-07-10T11:55:18+08:00">2018-07-10</time>
+              <time title="创建时间：2018-06-24 11:55:18" itemprop="dateCreated datePublished" datetime="2018-06-24T11:55:18+08:00">2018-06-24</time>
             
 
             
@@ -604,7 +597,7 @@ Output: [1]</code></pre>
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
 
                 
                 
@@ -641,33 +634,30 @@ Output: [1]</code></pre>
       
         
           
-            <h1 id="机器学习算法-决策树">机器学习算法-决策树</h1>
-<h2 id="前言">前言</h2>
-<p>决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。</p>
-<h2 id="决策树基本算法">决策树基本算法</h2>
-<p>输入:</p>
-<p>训练集 <span class="math inline">\(D\)</span> = <span class="math inline">\(\{(x_1, y_1), (x_2, y_2), ..., (x_m, y_m)\}\)</span><br>
-属性集 <span class="math inline">\(A\)</span> = <span class="math inline">\(\{(a_1, a_2, ..., a_d)\}\)</span></p>
-<p>过程：函数 <span class="math inline">\(TreeGenerate(G, A)\)</span><br>
-if <span class="math inline">\(D\)</span> 中的样本全属于同一类别 <span class="math inline">\(C\)</span> then<br>
-  将node标记为 <span class="math inline">\(C\)</span> 类叶节点; return<br>
-end if<br>
-if <span class="math inline">\(A\)</span> = <span class="math inline">\(\emptyset\)</span> OR <span class="math inline">\(D\)</span> 中的样本在 <span class="math inline">\(A\)</span> 上的取值相同 then<br>
-  将node标记为叶节点，类别为 <span class="math inline">\(D\)</span> 中样本最多的一类; return<br>
-end if<br>
-从 <span class="math inline">\(A\)</span> 中选择最优化分属性 <span class="math inline">\(a_*\)</span><br>
-for <span class="math inline">\(a_*\)</span> 的每一个取值 <span class="math inline">\(a_{*}^{v}\)</span> do<br>
-  为node生成一个分支；令 <span class="math inline">\(D_v\)</span> 表示 <span class="math inline">\(D\)</span> 中在 <span class="math inline">\(a_*\)</span> 上取值为 <span class="math inline">\(a_{*}^{v}\)</span> 的样本子集;<br>
-  if <span class="math inline">\(D_v\)</span> 为空 then<br>
-   将分支结点标记为叶节点，其类别标记为 <span class="math inline">\(D\)</span> 中样本最多的类; return<br>
-  else<br>
-  以 <span class="math inline">\(TreeGenerate(D_v, A \setminus\{a_*\})\)</span> 为分支结点<br>
- end if<br>
-end for</p>
-<h2 id="属性划分">属性划分</h2>
-<p>假定当前样本集合 <span class="math inline">\(D\)</span> 中第 <span class="math inline">\(k\)</span> 类样本所占比例为 <span class="math inline">\(p_k\)</span> (<span class="math inline">\(k\)</span> = 1,2, ... ,<span class="math inline">\(\mathcal{|Y|}\)</span>)</p>
-<p>1.信息熵 <span class="math display">\[Ent(D) = - \sum_{k=1}^{|\mathcal{Y}|}p_klog_2p_k\]</span> 2.信息增益 <span class="math display">\[ Gain(D, a) = Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v\rvert}{\lvert D \rvert}Ent(D^v)\]</span></p>
-<p>3.信息增益率 <span class="math display">\[Gain\_ratio = \frac{Gain(D, a)}{IV(a)}\]</span> <span class="math display">\[IV(a) = -\sum_{v=1}^{V}\frac{|D^v|}{|D|}log_2\frac{|D^v|}{|D|}\]</span> 4.基尼系数 <span class="math display">\[Gini(D)=\sum_{k=1}^{|\mathcal{Y}|}\sum_{k^{`} \neq k}p_k p_{k^`}\]</span> <span class="math display">\[Gini\_index(D,a) = \sum_{v=1}^{V}\frac{|D^v|}{|D|}Gini(D^v)\]</span></p>
+            <h2 id="问题描述"><strong>问题描述</strong></h2>
+<p>Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</p>
+<ul>
+<li>Integers in each row are sorted in ascending from left to right.</li>
+<li>Integers in each column are sorted in ascending from top to bottom. Example:</li>
+</ul>
+<p>Consider the following matrix:</p>
+<pre><code>[
+    [1,   4,  7, 11, 15],
+    [2,   5,  8, 12, 19],
+    [3,   6,  9, 16, 22],
+    [10, 13, 14, 17, 24],
+    [18, 21, 23, 26, 30]
+]</code></pre>
+<p>Given <code>target</code> = 5, return <code>true</code>.</p>
+<p>Given <code>target</code> = 20, return <code>false</code>.</p>
+<h2 id="解题思路"><strong>解题思路</strong></h2>
+<p>先找到 <code>target</code> 可能在的行，然后在行内使用二分查找。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="keyword">not</span> matrix[<span class="number">0</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">binary_search</span><span class="params">(nums, target)</span>:</span></span><br><span class="line">            l = <span class="number">0</span></span><br><span class="line">            r = len(nums) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span>(l &lt;= r):</span><br><span class="line">                m = (l + r) // <span class="number">2</span></span><br><span class="line">                <span class="keyword">if</span> nums[m] == target:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">                <span class="keyword">elif</span> nums[m] &lt; target:</span><br><span class="line">                    l = m + <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    r = m - <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        r = len(matrix)</span><br><span class="line">        <span class="keyword">for</span> nums <span class="keyword">in</span> matrix:</span><br><span class="line">            <span class="keyword">if</span> nums[<span class="number">0</span>] &gt; target:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">            <span class="keyword">if</span> nums[<span class="number">-1</span>] &lt; target:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> binary_search(nums, target):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h2 id="进阶"><strong>进阶</strong></h2>
+<p>对整个矩阵进行二分查找，或者进行分块儿查找。首先看整个矩阵 <code>((0, 0), (m-1, n-1))</code>，中点 <code>((m-1)//2, (n-1)//2)</code> 通过对比中点数据大小和target大小，确定target在哪个区域。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        m = len(matrix)</span><br><span class="line">        <span class="keyword">if</span> m == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        n = len(matrix[<span class="number">0</span>])</span><br><span class="line">        X = [(<span class="number">0</span>, <span class="number">0</span>, m - <span class="number">1</span>, n - <span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">while</span> X:</span><br><span class="line">            i, j, k, l = X.pop()</span><br><span class="line">            <span class="keyword">if</span> i &gt; k <span class="keyword">or</span> j &gt; l <span class="keyword">or</span> \</span><br><span class="line">                matrix[i][j] &gt; target <span class="keyword">or</span> matrix[k][l] &lt; target:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            p, q = (i + k)// <span class="number">2</span>, (j + l) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> matrix[p][q] == target:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">if</span> matrix[p][q] &lt; target:</span><br><span class="line">                X += [(p + <span class="number">1</span>, j, k, q), (<span class="number">0</span>, q + <span class="number">1</span>, k, l)]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                X += [(i, j, k, q - <span class="number">1</span>), (<span class="number">0</span>, q, p - <span class="number">1</span>, l)]</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h2 id="python耍赖做法"><strong>Python耍赖做法</strong></h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> any(target <span class="keyword">in</span> row <span class="keyword">for</span> row <span class="keyword">in</span> matrix)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -887,7 +877,7 @@ Output: 4</code></pre>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -931,7 +921,7 @@ Output: 4</code></pre>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -985,7 +975,19 @@ Output: 4</code></pre>
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
