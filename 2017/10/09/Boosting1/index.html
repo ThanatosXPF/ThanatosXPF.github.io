@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="1. 前言 Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 \(T\) ,最终将这 \(T\) 个基学习器进行加权组合。 2. 加法模型和向前分布算法 Boo">
+  <meta name="description" content="前言 Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 \(T\) ,最终将这 \(T\) 个基学习器进行加权组合。 加法模型和向前分布算法 Boosting算">
 <meta name="keywords" content="Algorithm,Machine Learning,Boosting,集成学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Boosting算法族一 Adaboost">
 <meta property="og:url" content="http://yoursite.com/2017/10/09/Boosting1/index.html">
 <meta property="og:site_name" content="流水">
-<meta property="og:description" content="1. 前言 Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 \(T\) ,最终将这 \(T\) 个基学习器进行加权组合。 2. 加法模型和向前分布算法 Boo">
+<meta property="og:description" content="前言 Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 \(T\) ,最终将这 \(T\) 个基学习器进行加权组合。 加法模型和向前分布算法 Boosting算">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-18T10:27:51.275Z">
+<meta property="og:updated_time" content="2019-04-18T11:07:10.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Boosting算法族一 Adaboost">
-<meta name="twitter:description" content="1. 前言 Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 \(T\) ,最终将这 \(T\) 个基学习器进行加权组合。 2. 加法模型和向前分布算法 Boo">
+<meta name="twitter:description" content="前言 Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 \(T\) ,最终将这 \(T\) 个基学习器进行加权组合。 加法模型和向前分布算法 Boosting算">
 
 
 
@@ -456,9 +456,9 @@
       
 
       
-        <h2 id="前言"><strong>1. 前言</strong></h2>
+        <h2 id="前言"><strong>前言</strong></h2>
 <p>Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 <span class="math inline">\(T\)</span> ,最终将这 <span class="math inline">\(T\)</span> 个基学习器进行加权组合。</p>
-<h2 id="加法模型和向前分布算法"><strong>2. 加法模型和向前分布算法</strong></h2>
+<h2 id="加法模型和向前分布算法"><strong>加法模型和向前分布算法</strong></h2>
 <p>Boosting算法族的基本特点是:</p>
 <ul>
 <li>1.加法模型</li>
@@ -482,10 +482,10 @@
     更新 <span class="math inline">\(f_m(x) = f_{m-1}(x) + \beta_m b(x;\gamma_m)\)</span><br>
   end for<br>
 输出: 加法模型 <span class="math inline">\(f(x)=f_M(x)=\sum_{m=1}^{M}\beta_m b(x;\gamma_m)\)</span></p>
-<p>向前分布算法是加法模型的一个学习方法。</p>
 <hr>
-<h2 id="adaboost"><strong>3. AdaBoost</strong></h2>
-<h3 id="adaboost-算法"><strong>3.1 AdaBoost 算法</strong></h3>
+<p>向前分布算法是加法模型的一个学习方法。</p>
+<h2 id="adaboost"><strong>AdaBoost</strong></h2>
+<h3 id="adaboost-算法"><strong>AdaBoost 算法</strong></h3>
 <p>AdaBoost 是Boosting家族一个比较著名的代表。基本算法如下（其中 <span class="math inline">\(y_i \in \{-1, +1\}\)</span>，<span class="math inline">\(f\)</span> 是真实函数）:</p>
 <hr>
 <p><strong>输入:</strong> 训练集 <span class="math inline">\(D=\{({\boldsymbol x}_1,y_1),({\boldsymbol x}_2,y_2),...,({\boldsymbol x}_m,y_m)\}\)</span><br>
@@ -502,7 +502,7 @@ for <span class="math inline">\(t=1,2,...,T\)</span> do<br>
 end for<br>
 <strong>输出:</strong> <span class="math inline">\(H(\boldsymbol x)=sign(\sum_{t=1}^{T}\alpha_th_t({\boldsymbol x}))\)</span></p>
 <hr>
-<h3 id="adaboost-算法的推导"><strong>3.2 Adaboost 算法的推导</strong></h3>
+<h3 id="adaboost-算法的推导"><strong>Adaboost 算法的推导</strong></h3>
 <p>AdaBoost 训练学习器的线性组合 <span class="math display">\[
     H(\boldsymbol{x})=\sum_{t=1}^{T}\alpha_th_t(\boldsymbol{x})
     \tag{1}
@@ -534,8 +534,8 @@ end for<br>
         &amp;=\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}_t}[e^{-\alpha_t}\mathbb{I}(f(\boldsymbol{x})=h_t(\boldsymbol{x}))+e^{\alpha_t}\mathbb{I}(f(\boldsymbol{x})\neq h_t(\boldsymbol{x}))] \\
         &amp;=e^{-\alpha_t}P_{\boldsymbol{x}\sim\mathcal{D}_t}(f(\boldsymbol{x})=h_t(\boldsymbol{x})) + e^{\alpha_t}P_{\boldsymbol{x}\sim\mathcal{D}_t}(f(\boldsymbol{x})\neq h_t(\boldsymbol{x}))\\
         &amp;=e^{-\alpha_t}(1-\epsilon_t)+e^{\alpha_t}\epsilon_t
-        \tag{6}
     \end{aligned}
+    \tag{6}
 \]</span> 其中 <span class="math inline">\(\epsilon_t=P_{\boldsymbol{x}\sim\mathcal{D}_t}(h_t(\boldsymbol{x})\neq f(\boldsymbol{x})\)</span> 则其导数 <span class="math display">\[
     \frac{\partial\ell_{exp}(\alpha_th_t|\mathcal{D}_t)}{\partial\alpha_t}=-e^{-\alpha_t}(1-\epsilon_t)+e^{\alpha_t}\epsilon_t
     \tag{7}
@@ -597,10 +597,10 @@ end for<br>
     \tag{16}
 \]</span> 即为算法中的样本分布更新公式。</p>
 <p>于是由式 <span class="math inline">\((8)\)</span> 和 式 <span class="math inline">\((16)\)</span> 可见，我们从基于加法模型分步向前优化指数损失函数的角度推导出了AdaBoost算法。</p>
-<h3 id="算法特性"><strong>3.3 算法特性</strong></h3>
+<h3 id="算法特性"><strong>算法特性</strong></h3>
 <p>AdaBoost算法要求基学习器能对特定的数据分布进行学习，这可通过“重赋权法” (re-weighting) 实施，即在训练过程的每一轮中，根据样本分布为每个训练样本重新赋予一个权重。需要注意的是Boosting学习器在每一轮训练都要检查当前生成的基学习器是否满足基本条件 (例如AdaBoost每一轮都要检测基学习器是否比随机猜测好)，一旦条件不满足当前基学习器即被抛弃，且学习过程停止。</p>
 <p>从偏差-方差分解的角度看，Boosting算发主要关注降低偏差，因此Boosting算法族能基于泛化能力相当弱的学习器构建出来很强的集成。</p>
-<h2 id="参考文献"><strong>4. 参考文献</strong></h2>
+<h2 id="参考文献"><strong>参考文献</strong></h2>
 <ul>
 <li><a href="http://zh.wikipedia.org/zh-cn/AdaBoost" target="_blank" rel="noopener">Wikipedia上关于AdaBoost的介绍</a></li>
 <li>《机器学习》周志华著，第8章</li>
@@ -840,7 +840,7 @@ end for<br>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">1. 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加法模型和向前分布算法"><span class="nav-number">2.</span> <span class="nav-text">2. 加法模型和向前分布算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adaboost"><span class="nav-number">3.</span> <span class="nav-text">3. AdaBoost</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#adaboost-算法"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 AdaBoost 算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adaboost-算法的推导"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Adaboost 算法的推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法特性"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 算法特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">4. 参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加法模型和向前分布算法"><span class="nav-number">2.</span> <span class="nav-text">加法模型和向前分布算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adaboost"><span class="nav-number">3.</span> <span class="nav-text">AdaBoost</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#adaboost-算法"><span class="nav-number">3.1.</span> <span class="nav-text">AdaBoost 算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adaboost-算法的推导"><span class="nav-number">3.2.</span> <span class="nav-text">Adaboost 算法的推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法特性"><span class="nav-number">3.3.</span> <span class="nav-text">算法特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
