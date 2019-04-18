@@ -702,7 +702,7 @@ Output: -1</code></pre>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/10/Decition_tree/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/09/Boosting1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mors">
@@ -722,7 +722,7 @@ Output: -1</code></pre>
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2017/04/10/Decition_tree/" class="post-title-link" itemprop="url">机器学习算法笔记-决策树</a>
+                <a href="/2017/10/09/Boosting1/" class="post-title-link" itemprop="url">Boosting算法族一 Adaboost</a>
               
             
           </h1>
@@ -747,7 +747,7 @@ Output: -1</code></pre>
                 
               
 
-              <time title="创建时间：2017-04-10 20:23:57" itemprop="dateCreated datePublished" datetime="2017-04-10T20:23:57+08:00">2017-04-10</time>
+              <time title="创建时间：2017-10-09 21:10:19" itemprop="dateCreated datePublished" datetime="2017-10-09T21:10:19+08:00">2017-10-09</time>
             
 
             
@@ -802,32 +802,157 @@ Output: -1</code></pre>
       
         
           
-            <h2 id="前言">前言</h2>
-<p>决策树（Decision Tree）是一种常见的机器学习方法。决策树基于树形结构进行决策，其每个非叶节点表示一个某属性集上的划分，每个分支代表这个特征属性在某个值域上的输出，每个叶节点则对应一个类别。本文主要总结一些基础的决策树算法。</p>
-<h2 id="决策树基本算法">决策树基本算法</h2>
-<p>输入:<br>
-训练集 <span class="math inline">\(D\)</span> = <span class="math inline">\(\{(x_1, y_1), (x_2, y_2), ..., (x_m, y_m)\}\)</span><br>
-属性集 <span class="math inline">\(A\)</span> = <span class="math inline">\(\{(a_1, a_2, ..., a_d)\}\)</span></p>
-<p>过程：函数 <span class="math inline">\(TreeGenerate(G, A)\)</span><br>
-if <span class="math inline">\(D\)</span> 中的样本全属于同一类别 <span class="math inline">\(C\)</span> then<br>
-  将node标记为 <span class="math inline">\(C\)</span> 类叶节点; return<br>
-end if<br>
-if <span class="math inline">\(A\)</span> = <span class="math inline">\(\emptyset\)</span> OR <span class="math inline">\(D\)</span> 中的样本在 <span class="math inline">\(A\)</span> 上的取值相同 then<br>
-  将node标记为叶节点，类别为 <span class="math inline">\(D\)</span> 中样本最多的一类; return<br>
-end if<br>
-从 <span class="math inline">\(A\)</span> 中选择最优化分属性 <span class="math inline">\(a_*\)</span><br>
-for <span class="math inline">\(a_*\)</span> 的每一个取值 <span class="math inline">\(a_{*}^{v}\)</span> do<br>
-  为node生成一个分支；令 <span class="math inline">\(D_v\)</span> 表示 <span class="math inline">\(D\)</span> 中在 <span class="math inline">\(a_*\)</span> 上取值为 <span class="math inline">\(a_{*}^{v}\)</span> 的样本子集;<br>
-  if <span class="math inline">\(D_v\)</span> 为空 then<br>
-   将分支结点标记为叶节点，其类别标记为 <span class="math inline">\(D\)</span> 中样本最多的类; return<br>
-  else<br>
-  以 <span class="math inline">\(TreeGenerate(D_v, A \setminus\{a_*\})\)</span> 为分支结点<br>
- end if<br>
-end for</p>
-<h2 id="属性划分">属性划分</h2>
-<p>假定当前样本集合 <span class="math inline">\(D\)</span> 中第 <span class="math inline">\(k\)</span> 类样本所占比例为 <span class="math inline">\(p_k\)</span> (<span class="math inline">\(k\)</span> = 1,2, ... ,<span class="math inline">\(\mathcal{|Y|}\)</span>)</p>
-<p>1.信息熵 <span class="math display">\[Ent(D) = - \sum_{k=1}^{|\mathcal{Y}|}p_klog_2p_k\]</span> 2.信息增益 <span class="math display">\[ Gain(D, a) = Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v\rvert}{\lvert D \rvert}Ent(D^v)\]</span></p>
-<p>3.信息增益率 <span class="math display">\[Gain\_ratio = \frac{Gain(D, a)}{IV(a)}\]</span> <span class="math display">\[IV(a) = -\sum_{v=1}^{V}\frac{|D^v|}{|D|}log_2\frac{|D^v|}{|D|}\]</span> 4.基尼系数 <span class="math display">\[Gini(D)=\sum_{k=1}^{|\mathcal{Y}|}\sum_{k^{`} \neq k}p_k p_{k^`}\]</span> <span class="math display">\[Gini\_index(D,a) = \sum_{v=1}^{V}\frac{|D^v|}{|D|}Gini(D^v)\]</span></p>
+            <h2 id="前言"><strong>1. 前言</strong></h2>
+<p>Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 <span class="math inline">\(T\)</span> ,最终将这 <span class="math inline">\(T\)</span> 个基学习器进行加权组合。</p>
+<h2 id="加法模型和向前分布算法"><strong>2. 加法模型和向前分布算法</strong></h2>
+<p>Boosting算法族的基本特点是:</p>
+<ul>
+<li>1.加法模型</li>
+<li>2.向前分步算法</li>
+</ul>
+<p>加法模型的意思是最终得到的模型，是若干个基函数的加和。</p>
+<p><span class="math display">\[f(x) = \sum_{m=1}^{M}\beta_mb(x;\gamma_m)\]</span></p>
+<p>其中，<span class="math inline">\(b(x;\gamma_m)\)</span> 称为基函数，<span class="math inline">\(\gamma_m\)</span> 为第 <span class="math inline">\(ｍ\)</span> 个基函数的参数，<span class="math inline">\(\beta_m\)</span> 为基函数的系数。</p>
+<p>在给定训练数据和损失函数 <span class="math inline">\(L(y,f(x))\)</span> 的条件下学习加法模型 <span class="math inline">\(f(x)\)</span> 就成为风险极小化问题，即损失函数极小化问题</p>
+<p><span class="math display">\[\min_{\beta_m,\gamma_m}\sum_{i=1}^{N}L(y_i, \sum_{m=1}^{M}\beta_mb(x_i;\gamma_m))\]</span></p>
+<p>随后该问题可以简化为:　从前向后，每一步只学习一个基函数及其系数，逐渐逼近上式，即: 每步只优化如下损失函数:</p>
+<p><span class="math display">\[ \min_{\beta, \gamma} \sum_{i=1}^{N}L(y_i, \beta b(x_i;\gamma))\]</span></p>
+<hr>
+<p>输入: <span class="math inline">\(T=\{\}\)</span><br>
+损失函数: <span class="math inline">\(L(y,f(x))\)</span><br>
+基函数集: <span class="math inline">\(\{b(x;\gamma)\}\)</span> 输出: 加法模型 <span class="math inline">\(f(x)\)</span><br>
+算法步骤:<br>
+  初始化 <span class="math inline">\(f_0(x)=0\)</span><br>
+  for <span class="math inline">\(m=1, 2, 3, ... ,M\)</span> do<br>
+    极小化损失函数 <span class="math inline">\(\arg\min_{\beta,\gamma}\sum_{i=1}^{N}L(y_i,f_{m-1}(x_i) + \beta b(x_i;\gamma))\)</span><br>
+    更新 <span class="math inline">\(f_m(x) = f_{m-1}(x) + \beta_m b(x;\gamma_m)\)</span><br>
+  end for<br>
+输出: 加法模型 <span class="math inline">\(f(x)=f_M(x)=\sum_{m=1}^{M}\beta_m b(x;\gamma_m)\)</span></p>
+<p>向前分布算法是加法模型的一个学习方法。</p>
+<hr>
+<h2 id="adaboost"><strong>3. AdaBoost</strong></h2>
+<h3 id="adaboost-算法"><strong>3.1 AdaBoost 算法</strong></h3>
+<p>AdaBoost 是Boosting家族一个比较著名的代表。基本算法如下（其中 <span class="math inline">\(y_i \in \{-1, +1\}\)</span>，<span class="math inline">\(f\)</span> 是真实函数）:</p>
+<hr>
+<p><strong>输入:</strong> 训练集 <span class="math inline">\(D=\{({\boldsymbol x}_1,y_1),({\boldsymbol x}_2,y_2),...,({\boldsymbol x}_m,y_m)\}\)</span><br>
+    基学习算法 <span class="math inline">\(\mathfrak{L}\)</span><br>
+    训练轮数 <span class="math inline">\(T\)</span><br>
+<strong>过程:</strong><br>
+<span class="math inline">\(\mathcal{D}_1 = \frac{1}{m}\)</span><br>
+for <span class="math inline">\(t=1,2,...,T\)</span> do<br>
+   <span class="math inline">\(h_t=\mathfrak{L}(D, \mathcal{D}_t)\)</span><br>
+   <span class="math inline">\(\epsilon_t=P_{x\sim\mathcal{D}_t}(h_t({\boldsymbol x}) \neq f(\boldsymbol x))\)</span><br>
+   if <span class="math inline">\(\epsilon_t &gt; 0.5\)</span> then break<br>
+   <span class="math inline">\(\alpha_t=\frac{1}{2}ln(\frac{1-\epsilon_t}{\epsilon_t})\)</span><br>
+   <span class="math inline">\(\begin{aligned} \mathcal{D}_{t+1}({\boldsymbol x}) = \frac{\mathcal{D}_t({\boldsymbol x})}{Z_t} \times\begin{cases}  exp(-\alpha_t) \quad if h_t(\boldsymbol x) = f(\boldsymbol x)\\  exp(\alpha_t) \quad if h_t(\boldsymbol x) \neq f(\boldsymbol x) \end{cases}  = \frac{\mathcal{D}_t({\boldsymbol x})exp(-\alpha_t f({\boldsymbol x})h_t({\boldsymbol x}))}{Z_t} \end{aligned}\)</span><br>
+end for<br>
+<strong>输出:</strong> <span class="math inline">\(H(\boldsymbol x)=sign(\sum_{t=1}^{T}\alpha_th_t({\boldsymbol x}))\)</span></p>
+<hr>
+<h3 id="adaboost-算法的推导"><strong>3.2 Adaboost 算法的推导</strong></h3>
+<p>AdaBoost 训练学习器的线性组合 <span class="math display">\[
+    H(\boldsymbol{x})=\sum_{t=1}^{T}\alpha_th_t(\boldsymbol{x})
+    \tag{1}
+\]</span> 来最小化指数损失函数 (exponential loss function) <span class="math display">\[
+    \ell_{exp}(H|\mathcal{D})=\mathbb{E}_{x\sim\mathcal{D}}
+    [e^{-f(\boldsymbol{x})H(\boldsymbol{x})}]
+    \tag{2}
+\]</span> 若 <span class="math inline">\(H(\boldsymbol{x})\)</span> 能另指数损失函数最小化，则考虑式 <span class="math inline">\((2)\)</span> 对 <span class="math inline">\(H(\boldsymbol{x})\)</span> 的偏导 <span class="math display">\[
+    \frac{\partial\ell_{exp}(H|\mathcal{D})}{\partial H(\boldsymbol{x})}=-e^{-H(\boldsymbol{x})}P(f(\boldsymbol{x})=1|\boldsymbol{x})+e^{H(\boldsymbol{x})}P(f(\boldsymbol{x}) = -1 | \boldsymbol{x})
+    \tag{3}
+\]</span> 另式 <span class="math inline">\((3)\)</span> 为零可解得 <span class="math display">\[
+    H(\boldsymbol{x})=\frac{1}{2}ln\frac{P(f(\boldsymbol{x})=1|\boldsymbol{x})}{P(f(\boldsymbol{x}) = -1 | \boldsymbol{x})}
+    \tag{4}
+\]</span> 因此，有 <span class="math display">\[
+    \begin{aligned}
+        sign(H(\boldsymbol{x}))&amp;=sign(\frac{1}{2}ln\frac{P(f(\boldsymbol{x})=1|\boldsymbol{x})}{P(f(\boldsymbol{x}) = -1 | \boldsymbol{x})})\\
+        &amp;=
+            \begin{cases}
+                1 &amp;\quad P(f(\boldsymbol{x})=1|\boldsymbol{x}) &gt; P(f(\boldsymbol{x})=-1|\boldsymbol{x}) \\
+                -1 &amp;\quad P(f(\boldsymbol{x})=1|\boldsymbol{x}) &lt; P(f(\boldsymbol{x})=-1|\boldsymbol{x})
+            \end{cases} \\
+        &amp;= \arg\min_{\mathcal{y}\in\{-1.1\}}P(f({x})=y|\boldsymbol{x})
+    \end{aligned}
+    \tag{5}
+\]</span> 这意味着 <span class="math inline">\(sign(H(\boldsymbol{x}))\)</span> 达到了贝叶斯最优错误率。换言之，若指数函数最小化，则分类错误率也将最小化。这说明指数损失函数是分类任务原本 <span class="math inline">\(0/1\)</span> 损失函数的一致的 (consistent) 替代损失函数。该函数连续可微，数学性质更好，因此我们用它替代 <span class="math inline">\(0/1\)</span> 损失函数作为优化目标。</p>
+<p>在AdaBoost算法中，关于 <span class="math inline">\(\alpha_t\)</span> ，<span class="math inline">\(h_t\)</span> 基于 <span class="math inline">\(\mathcal{D}_t\)</span> 产生后，该基分类器权重 <span class="math inline">\(\alpha_t\)</span> 应使 <span class="math inline">\(\alpha_th_t\)</span> 最小化损失函数。 <span class="math display">\[
+    \begin{aligned}
+        \ell_{exp}(\alpha_th_t|\mathcal{D}_t)&amp;=\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}_t}[e^{-f(\boldsymbol{x})\alpha_th_t(\mathcal{x})}] \\
+        &amp;=\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}_t}[e^{-\alpha_t}\mathbb{I}(f(\boldsymbol{x})=h_t(\boldsymbol{x}))+e^{\alpha_t}\mathbb{I}(f(\boldsymbol{x})\neq h_t(\boldsymbol{x}))] \\
+        &amp;=e^{-\alpha_t}P_{\boldsymbol{x}\sim\mathcal{D}_t}(f(\boldsymbol{x})=h_t(\boldsymbol{x})) + e^{\alpha_t}P_{\boldsymbol{x}\sim\mathcal{D}_t}(f(\boldsymbol{x})\neq h_t(\boldsymbol{x}))\\
+        &amp;=e^{-\alpha_t}(1-\epsilon_t)+e^{\alpha_t}\epsilon_t
+        \tag{6}
+    \end{aligned}
+\]</span> 其中 <span class="math inline">\(\epsilon_t=P_{\boldsymbol{x}\sim\mathcal{D}_t}(h_t(\boldsymbol{x})\neq f(\boldsymbol{x})\)</span> 则其导数 <span class="math display">\[
+    \frac{\partial\ell_{exp}(\alpha_th_t|\mathcal{D}_t)}{\partial\alpha_t}=-e^{-\alpha_t}(1-\epsilon_t)+e^{\alpha_t}\epsilon_t
+    \tag{7}
+\]</span> 令其为零可得到算法中的权重更新公式 <span class="math display">\[
+    \alpha_t=\frac{1}{2}ln(\frac{1-\epsilon_t}{\epsilon_t})
+    \tag{8}
+\]</span> AdaBoost 在获取 <span class="math inline">\(H_{t-1}\)</span> 之后样本分布将进行调整，使下一轮的 <span class="math inline">\(h_t\)</span> 能够纠正 <span class="math inline">\(H_{t-1}\)</span> 的全部错误，即最小化 <span class="math display">\[
+    \begin{aligned}
+        \ell_{exp}(H_{t-1}+h_t|\mathcal{D})
+        &amp;= \mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}} [e^{-f(\boldsymbol{x})(H_{t-1}(\boldsymbol{x}) + h_t(\boldsymbol{x}))}]\\
+        &amp;=\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}e^{-f(\boldsymbol{x})h_t(\boldsymbol{x}))}]
+    \end{aligned}
+    \tag{9}
+\]</span> 注意到 <span class="math inline">\(f^2(\boldsymbol{x})=h_t^2(\boldsymbol{x})=1\)</span>，则对 <span class="math inline">\(e^{-f(\boldsymbol{x})h_t(\boldsymbol{x}))}\)</span> 进行泰勒展开。 <span class="math display">\[
+    \begin{aligned}
+        \ell_{exp}(H_{t-1}+h_t|\mathcal{D})
+        &amp;\simeq \mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}(1-f(\boldsymbol{x})h_t(\boldsymbol{x})+\frac{f^2(\boldsymbol{x})h_t^2(\boldsymbol{x})}{2})]\\
+        &amp;=\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}(1-f(\boldsymbol{x})h_t(\boldsymbol{x})+\frac{1}{2})]
+    \end{aligned}
+    \tag{10}
+\]</span> 于是，理想的基学习器 <span class="math display">\[
+    \begin{aligned}
+        h_t(\boldsymbol{x})
+        &amp;=\mathop{\arg\min}_{h}\ell_{exp}(H_{t-1}+h|\mathcal{D})\\
+        &amp;=\mathop{\arg\min}_{h}\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}(1-f(\boldsymbol{x})h(\boldsymbol{x})+\frac{1}{2})]\\
+        &amp;=\mathop{\arg\max}_{h} \mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})} f(\boldsymbol{x})h(\boldsymbol{x})]\\
+        &amp;=\mathop{\arg\max}_{h} \mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[\frac{e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}}{\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}]} f(\boldsymbol{x})h(\boldsymbol{x})]
+    \end{aligned}
+    \tag{11}
+\]</span> <span class="math inline">\(\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}_t}[e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}]\)</span> 为常数，令 <span class="math inline">\(\mathcal{D}_t\)</span> 表示一个分布 <span class="math display">\[
+    \mathcal{D}_t(\boldsymbol{x}) = \frac{\mathcal{D}(\boldsymbol{x})e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}}{\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}]}
+    \tag{12}
+\]</span> 由数学期望的定义，其等价于令 <span class="math display">\[
+    \begin{aligned}
+        h_t(\boldsymbol{x})&amp;=\arg\max_h
+        \mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[\frac{e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}}{\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}_t}[e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}]} f(\boldsymbol{x})h(\boldsymbol{x})] \\
+        &amp;=\arg\max_h \mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}_t}[f(\boldsymbol{x})h(\boldsymbol{x})]
+    \end{aligned}
+    \tag{13}
+\]</span> 由于 <span class="math inline">\(f(\boldsymbol{x})h(\boldsymbol{x} \in \{-1, +1\})\)</span> ，有 <span class="math display">\[
+    f(\boldsymbol{x})h(\boldsymbol{x})=1-2\mathbb{I}(f(\boldsymbol{x}) \neq h(\boldsymbol{x}))
+    \tag{14}
+\]</span> 则理想的基学习器 <span class="math display">\[
+    h_t(\boldsymbol{x})=\arg\min_h
+    \mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}_t}
+    [\mathbb{I}(f(\boldsymbol{x}) \neq h(\boldsymbol{x}))]
+    \tag{15}
+\]</span> 由此可见，理想的基学习器 <span class="math inline">\(h_t(x)\)</span> 能在 <span class="math inline">\(\mathcal{D}_t\)</span> 下最小化误差。因此弱分类器应基于分布 <span class="math inline">\(\mathcal{D}_t\)</span> 训练，且分类误差应小于 <span class="math inline">\(0.5\)</span> 。这在一定程度上类似于“残差逼近”的思想，考虑到 <span class="math inline">\(\mathcal{D}_t\)</span> 与 <span class="math inline">\(\mathcal{D}_{t+1}\)</span> 的关系，有 <span class="math display">\[
+    \begin{aligned}
+        \mathcal{D}_{t+1}(\boldsymbol{x})
+        &amp;= \frac{\mathcal{D}(\boldsymbol{x})e^{-f(\boldsymbol{x})H_{t}(\boldsymbol{x})}}
+        {\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[e^{-f(\boldsymbol{x})H_{t}(\boldsymbol{x})}]}\\
+        &amp;= \frac{\mathcal{D}(\boldsymbol{x})e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}e^{-f(\boldsymbol{x})\alpha_th_t(\boldsymbol{x})}}
+        {\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[e^{-f(\boldsymbol{x})H_{t}(\boldsymbol{x})}]}\\
+        &amp;=\mathcal{D}_{t}(\boldsymbol{x})e^{-f(\boldsymbol{x})\alpha_th_t(\boldsymbol{x})}
+        \frac{\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[e^{-f(\boldsymbol{x})H_{t-1}(\boldsymbol{x})}]}
+        {\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}[e^{-f(\boldsymbol{x})H_{t}(\boldsymbol{x})}]}
+    \end{aligned}
+    \tag{16}
+\]</span> 即为算法中的样本分布更新公式。</p>
+<p>于是由式 <span class="math inline">\((8)\)</span> 和 式 <span class="math inline">\((16)\)</span> 可见，我们从基于加法模型分步向前优化指数损失函数的角度推导出了AdaBoost算法。</p>
+<h3 id="算法特性"><strong>3.3 算法特性</strong></h3>
+<p>AdaBoost算法要求基学习器能对特定的数据分布进行学习，这可通过“重赋权法” (re-weighting) 实施，即在训练过程的每一轮中，根据样本分布为每个训练样本重新赋予一个权重。需要注意的是Boosting学习器在每一轮训练都要检查当前生成的基学习器是否满足基本条件 (例如AdaBoost每一轮都要检测基学习器是否比随机猜测好)，一旦条件不满足当前基学习器即被抛弃，且学习过程停止。</p>
+<p>从偏差-方差分解的角度看，Boosting算发主要关注降低偏差，因此Boosting算法族能基于泛化能力相当弱的学习器构建出来很强的集成。</p>
+<h2 id="参考文献"><strong>4. 参考文献</strong></h2>
+<ul>
+<li><a href="http://zh.wikipedia.org/zh-cn/AdaBoost" target="_blank" rel="noopener">Wikipedia上关于AdaBoost的介绍</a></li>
+<li>《机器学习》周志华著，第8章</li>
+<li>《统计学习方法》李航著，第8章</li>
+<li><a href="https://blog.csdn.net/v_JULY_v/article/details/40718799" target="_blank" rel="noopener">Adaboost 算法的原理与推导</a></li>
+</ul>
 
           
         
@@ -873,7 +998,7 @@ end for</p>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -917,7 +1042,7 @@ end for</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -983,7 +1108,11 @@ end for</p>
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
