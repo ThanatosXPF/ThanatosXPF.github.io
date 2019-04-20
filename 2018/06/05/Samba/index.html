@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,7 +70,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '7.1.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="使用samba共享文件 前言 最近因为很多原因需要共享一个 Ubuntu 系统下的文件夹供他人访问，于是决定使用 samba 。 关于samba Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等">
+  <meta name="description" content="前言 最近因为很多原因需要共享一个 Ubuntu 系统下的文件夹供他人访问，于是决定使用 samba 。">
 <meta name="keywords" content="Ubuntu,share">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Samba共享文件">
 <meta property="og:url" content="http://yoursite.com/2018/06/05/Samba/index.html">
 <meta property="og:site_name" content="流水">
-<meta property="og:description" content="使用samba共享文件 前言 最近因为很多原因需要共享一个 Ubuntu 系统下的文件夹供他人访问，于是决定使用 samba 。 关于samba Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等">
+<meta property="og:description" content="前言 最近因为很多原因需要共享一个 Ubuntu 系统下的文件夹供他人访问，于是决定使用 samba 。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-16T16:34:56.528Z">
+<meta property="og:updated_time" content="2019-04-20T15:06:48.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Samba共享文件">
-<meta name="twitter:description" content="使用samba共享文件 前言 最近因为很多原因需要共享一个 Ubuntu 系统下的文件夹供他人访问，于是决定使用 samba 。 关于samba Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等">
+<meta name="twitter:description" content="前言 最近因为很多原因需要共享一个 Ubuntu 系统下的文件夹供他人访问，于是决定使用 samba 。">
 
 
 
@@ -290,9 +290,6 @@
   
 
   
-    
-
-  
 
   
     <div class="site-search">
@@ -340,6 +337,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -456,9 +456,9 @@
       
 
       
-        <h1 id="使用samba共享文件">使用samba共享文件</h1>
-<h2 id="前言">前言</h2>
+        <h2 id="前言">前言</h2>
 <p>最近因为很多原因需要共享一个 Ubuntu 系统下的文件夹供他人访问，于是决定使用 samba 。</p>
+<a id="more"></a>
 <h2 id="关于samba">关于samba</h2>
 <p>Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。通过设置“NetBIOS over TCP/IP”使得Samba不但能与局域网络主机分享资源，还能与全世界的电脑分享资源。</p>
 <p>SMB（Server Message Block）通信协议是微软（Microsoft）和英特尔(Intel)在1987年制定的协议，主要是作为Microsoft网络的通讯协议。SMB 是在会话层（session layer）和表示层（presentation layer）以及小部分应用层（application layer）的协议。 SMB使用了NetBIOS的应用程序接口 （Application Program Interface，简称API）。另外，它是一个开放性的协议，允许了协议扩展——使得它变得更大而且复杂；大约有65个最上层的作业，而每个作业都超过120个函数，甚至Windows NT也没有全部支持到，最近微软又把 SMB 改名为 CIFS（Common Internet File System），并且加入了许多新的特色。</p>
@@ -466,23 +466,23 @@
 <pre><code>Ubuntu 16.04
 4.13.0-43-generic</code></pre>
 <h2 id="samba-安装">Samba 安装</h2>
-<pre><code>$ sudo apt install samba</code></pre>
-<h2 id="samba-配置">Samba 配置</h2>
+<pre><code># sudo apt install samba</code></pre>
+<h2 id="samba-配置参数说明">Samba 配置参数说明</h2>
 <p>Samba 服务的配置文件位于 /etc/samba/smb.conf</p>
-<h4 id="全局文件配置参数">全局文件配置参数</h4>
+<h3 id="全局文件配置参数">全局文件配置参数</h3>
 <pre><code>[global]
     config file = /etc/samba/smb.conf.%U       #可以让你使用另一个配置文件来覆盖缺省的配置文件。如果文件 不存在，则该项无效。
     workgroup = WORKGROUP                      #工作组名称
     server string = Samba Server Version %v    #主机的简易说明
     netbios name = MYSERVER                    #主机的netBIOS名称，如果不填写则默认服务器DNS的一部分，workgroup和netbios name名字不要设置成一样
-    interfaces = lo eth0 192.168.12.2/24 192.168.13.2/24   
+    interfaces = lo eth0 192.168.12.2/24 192.168.13.2/24  
                                                #设置samba服务器监听网卡，可以写网卡名称或IP地址，默认注释
     hosts allow = 127. 192.168.12. 192.168.13. #设置允许连接到samba服务器的客户端，默认注释
     hosts deny = 192.168.12.0/255.255.255.0    #设置不允许连接到samba服务器的客户端，默认注释
     log level = 1                              #日志文件安全级别，0~10级别，默认0
     log file = /var/log/samba/%m               #产生日志文件的命名，默认以访问者IP地址命名
     max log size = 50                          #日志文件最大容量50，默认50，单位为KB，0表示不限制</code></pre>
-<h4 id="自定义共享文件配置参数">自定义共享文件配置参数</h4>
+<h3 id="自定义共享文件配置参数">自定义共享文件配置参数</h3>
 <pre><code>[share]                                        # 自定义共享名
     comment = Home Directories                 # 描述符，是给系统管理员看的
 
@@ -513,13 +513,14 @@
     admin users = user1                        # 设置共享目录的管理员，具有完全权限
     force create mode = 0775                   # Windows 与 Linux 具有不同的文件和文件夹默认权限，Windows下新建的文件是
     force directory mode = 0775                # 可执行的，所以必须强制设定其权限</code></pre>
-<h4 id="关于安全级别">关于安全级别</h4>
+<h3 id="关于安全级别">关于安全级别</h3>
 <pre><code>share ：表示匿名用户，不需要 samba 账户就可登陆 samba 服务器
 user ：系统账户要先添加进 samba 库然后变成 samba 用户，使用 samba 用户来登陆，简单来讲就是需要使用用户密码登录
 server ：由另外一台 samba 服务器来对用户进行身份验证
 domain ：把 samba 服务器加入到 NT 域，由 NT 的域控制器来进行身份验证
 ADS ：（Active Directory Service，活动目录服务），是 samba3.0 中新增的身份验证方式，采用 ADS 验证方式，samba 服务器集成到活动目录中</code></pre>
-<h4 id="实用的配置">实用的配置</h4>
+<h2 id="samba-配置">Samba 配置</h2>
+<h3 id="实用的配置">实用的配置</h3>
 <p>可以用此配置共享一个服务器上的所有文件，使浏览数据更加方便。<em>但这样做会产生一定的安全风险。</em></p>
 <pre><code>[share]
     path = /
@@ -531,15 +532,16 @@ ADS ：（Active Directory Service，活动目录服务），是 samba3.0 中新
     directory mask = 0775
     force directory mode = 0775
     available = yes</code></pre>
-<h4 id="设置登录密码">设置登录密码</h4>
-<pre><code>$ sudo touch /etc/samba/smbpasswd               
-$ sudo smbpasswd -a                             # 根据设置的valid user，设置用户密码。</code></pre>
-<h4 id="重启-samba-服务使配置生效">重启 Samba 服务使配置生效</h4>
-<pre><code>$ sudo /etc/init.d/samba restart</code></pre>
-<h4 id="通过-windows-连接">通过 Windows 连接</h4>
+<h3 id="设置登录密码">设置登录密码</h3>
+<pre><code># sudo touch /etc/samba/smbpasswd
+# sudo smbpasswd -a                             # 根据设置的valid user，设置用户密码。</code></pre>
+<h3 id="重启-samba-服务使配置生效">重启 Samba 服务使配置生效</h3>
+<pre><code># sudo /etc/init.d/samba restart</code></pre>
+<h2 id="连接">连接</h2>
+<h3 id="通过-windows-连接">通过 Windows 连接</h3>
 <p>在文件资源管理器输入</p>
 <pre><code>\\(ip)</code></pre>
-<h4 id="通过-linux-连接">通过 Linux 连接</h4>
+<h3 id="通过-linux-连接">通过 Linux 连接</h3>
 <p>在 connect to server，输入</p>
 <pre><code>smb://(ip)</code></pre>
 
@@ -590,8 +592,8 @@ $ sudo smbpasswd -a                             # 根据设置的valid user，�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/10/Linux挂载硬盘/" rel="prev" title="Linux挂载硬盘">
-                Linux挂载硬盘 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/10/Linux挂载硬盘/" rel="prev" title="Linux 挂载多块大容量硬盘">
+                Linux 挂载多块大容量硬盘 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -775,7 +777,7 @@ $ sudo smbpasswd -a                             # 根据设置的valid user，�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用samba共享文件"><span class="nav-number">1.</span> <span class="nav-text">使用samba共享文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于samba"><span class="nav-number">1.2.</span> <span class="nav-text">关于samba</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.3.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#samba-安装"><span class="nav-number">1.4.</span> <span class="nav-text">Samba 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#samba-配置"><span class="nav-number">1.5.</span> <span class="nav-text">Samba 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全局文件配置参数"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">全局文件配置参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义共享文件配置参数"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">自定义共享文件配置参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于安全级别"><span class="nav-number">1.5.0.3.</span> <span class="nav-text">关于安全级别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实用的配置"><span class="nav-number">1.5.0.4.</span> <span class="nav-text">实用的配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置登录密码"><span class="nav-number">1.5.0.5.</span> <span class="nav-text">设置登录密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重启-samba-服务使配置生效"><span class="nav-number">1.5.0.6.</span> <span class="nav-text">重启 Samba 服务使配置生效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过-windows-连接"><span class="nav-number">1.5.0.7.</span> <span class="nav-text">通过 Windows 连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过-linux-连接"><span class="nav-number">1.5.0.8.</span> <span class="nav-text">通过 Linux 连接</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于samba"><span class="nav-number">2.</span> <span class="nav-text">关于samba</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">3.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#samba-安装"><span class="nav-number">4.</span> <span class="nav-text">Samba 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#samba-配置参数说明"><span class="nav-number">5.</span> <span class="nav-text">Samba 配置参数说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局文件配置参数"><span class="nav-number">5.1.</span> <span class="nav-text">全局文件配置参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义共享文件配置参数"><span class="nav-number">5.2.</span> <span class="nav-text">自定义共享文件配置参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于安全级别"><span class="nav-number">5.3.</span> <span class="nav-text">关于安全级别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#samba-配置"><span class="nav-number">6.</span> <span class="nav-text">Samba 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实用的配置"><span class="nav-number">6.1.</span> <span class="nav-text">实用的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置登录密码"><span class="nav-number">6.2.</span> <span class="nav-text">设置登录密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启-samba-服务使配置生效"><span class="nav-number">6.3.</span> <span class="nav-text">重启 Samba 服务使配置生效</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接"><span class="nav-number">7.</span> <span class="nav-text">连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-windows-连接"><span class="nav-number">7.1.</span> <span class="nav-text">通过 Windows 连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-linux-连接"><span class="nav-number">7.2.</span> <span class="nav-text">通过 Linux 连接</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -898,7 +900,9 @@ $ sudo smbpasswd -a                             # 根据设置的valid user，�
   
 
 
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
 
 

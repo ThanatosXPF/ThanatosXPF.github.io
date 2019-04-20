@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,7 +70,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '7.1.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="前言 Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 \(T\) ,最终将这 \(T\) 个基学习器进行加权组合。 加法模型和向前分布算法 Boosting算">
+  <meta name="description" content="前言 Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 \(T\) ,最终将这 \(T\) 个基学习器进行加权组合。">
 <meta name="keywords" content="Algorithm,Machine Learning,Boosting,集成学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Boosting算法族一 Adaboost">
 <meta property="og:url" content="http://yoursite.com/2017/10/09/Boosting1/index.html">
 <meta property="og:site_name" content="流水">
-<meta property="og:description" content="前言 Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 \(T\) ,最终将这 \(T\) 个基学习器进行加权组合。 加法模型和向前分布算法 Boosting算">
+<meta property="og:description" content="前言 Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 \(T\) ,最终将这 \(T\) 个基学习器进行加权组合。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-18T11:07:10.220Z">
+<meta property="og:updated_time" content="2019-04-20T14:57:44.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Boosting算法族一 Adaboost">
-<meta name="twitter:description" content="前言 Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 \(T\) ,最终将这 \(T\) 个基学习器进行加权组合。 加法模型和向前分布算法 Boosting算">
+<meta name="twitter:description" content="前言 Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 \(T\) ,最终将这 \(T\) 个基学习器进行加权组合。">
 
 
 
@@ -290,9 +290,6 @@
   
 
   
-    
-
-  
 
   
     <div class="site-search">
@@ -340,6 +337,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -458,6 +458,7 @@
       
         <h2 id="前言"><strong>前言</strong></h2>
 <p>Boosting 是一族可将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本受到更多关注，然后基于调整过后的分布来训练下一个基学习器，如此反复进行，直到基学习器数目达到事先指定的值 <span class="math inline">\(T\)</span> ,最终将这 <span class="math inline">\(T\)</span> 个基学习器进行加权组合。</p>
+<a id="more"></a>
 <h2 id="加法模型和向前分布算法"><strong>加法模型和向前分布算法</strong></h2>
 <p>Boosting算法族的基本特点是:</p>
 <ul>
@@ -967,7 +968,9 @@ end for<br>
   
 
 
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
 
 

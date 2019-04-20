@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,7 +70,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '7.1.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="前言-关于回溯法 什么是回溯法 回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。 回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”。 许多复杂的，规模较大的">
+  <meta name="description" content="前言-关于回溯法 什么是回溯法 回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。">
 <meta name="keywords" content="Algorithm,Leetcode,Back Trace,Medium">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode题之回溯法">
 <meta property="og:url" content="http://yoursite.com/2018/07/02/Leetcode-BackTrace/index.html">
 <meta property="og:site_name" content="流水">
-<meta property="og:description" content="前言-关于回溯法 什么是回溯法 回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。 回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”。 许多复杂的，规模较大的">
+<meta property="og:description" content="前言-关于回溯法 什么是回溯法 回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1933922589,3540416166&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2019-04-20T14:24:54.958Z">
+<meta property="og:updated_time" content="2019-04-20T14:58:11.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode题之回溯法">
-<meta name="twitter:description" content="前言-关于回溯法 什么是回溯法 回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。 回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”。 许多复杂的，规模较大的">
+<meta name="twitter:description" content="前言-关于回溯法 什么是回溯法 回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。">
 <meta name="twitter:image" content="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1933922589,3540416166&fm=26&gp=0.jpg">
 
 
@@ -292,9 +292,6 @@
   
 
   
-    
-
-  
 
   
     <div class="site-search">
@@ -342,6 +339,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -461,6 +461,7 @@
         <h2 id="前言-关于回溯法">前言-关于回溯法</h2>
 <h3 id="什么是回溯法">什么是回溯法</h3>
 <p>回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。</p>
+<a id="more"></a>
 <p>回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”。</p>
 <p>许多复杂的，规模较大的问题都可以使用回溯法，有“通用解题方法”的美称。但是同时回溯法也容易遇到递归次数过多的问题影响时间复杂度，这时候就要开始考虑进行减支或者尝试DP算法。</p>
 <h3 id="基本思想">基本思想</h3>
@@ -931,7 +932,9 @@ Given word = &quot;ABCB&quot;, return false.</code></pre>
   
 
 
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
 
 

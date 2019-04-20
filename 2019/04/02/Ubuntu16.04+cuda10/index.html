@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,7 +70,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '7.1.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="前言 之前一段时间帮实验室的十几台电脑安装或者更新了Tensorflow环境，从最开始的安装 Cuda8.0 + Tensorflow 1.2.0 到前一段时间卸载 Cuda8.0 安装 Cuda10.0 和 Tensorflow 1.13.0。感觉有必要总结一下安装过程。 卸载原有 Nvidia 驱动以及 Cuda # sudo apt remove --purge nvidia* # sudo">
+  <meta name="description" content="前言 之前一段时间帮实验室的十几台电脑安装或者更新了Tensorflow环境，从最开始的安装 Cuda8.0 + Tensorflow 1.2.0 到前一段时间卸载 Cuda8.0 安装 Cuda10.0 和 Tensorflow 1.13.0。感觉有必要总结一下安装过程。">
 <meta name="keywords" content="Ubuntu,Technique,Environment">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu 16.04 cuda10.0 cudnn 7.4.1 tensorflow 1.13.1 环境配置">
 <meta property="og:url" content="http://yoursite.com/2019/04/02/Ubuntu16.04+cuda10/index.html">
 <meta property="og:site_name" content="流水">
-<meta property="og:description" content="前言 之前一段时间帮实验室的十几台电脑安装或者更新了Tensorflow环境，从最开始的安装 Cuda8.0 + Tensorflow 1.2.0 到前一段时间卸载 Cuda8.0 安装 Cuda10.0 和 Tensorflow 1.13.0。感觉有必要总结一下安装过程。 卸载原有 Nvidia 驱动以及 Cuda # sudo apt remove --purge nvidia* # sudo">
+<meta property="og:description" content="前言 之前一段时间帮实验室的十几台电脑安装或者更新了Tensorflow环境，从最开始的安装 Cuda8.0 + Tensorflow 1.2.0 到前一段时间卸载 Cuda8.0 安装 Cuda10.0 和 Tensorflow 1.13.0。感觉有必要总结一下安装过程。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-20T14:50:49.244Z">
+<meta property="og:updated_time" content="2019-04-20T15:06:17.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 16.04 cuda10.0 cudnn 7.4.1 tensorflow 1.13.1 环境配置">
-<meta name="twitter:description" content="前言 之前一段时间帮实验室的十几台电脑安装或者更新了Tensorflow环境，从最开始的安装 Cuda8.0 + Tensorflow 1.2.0 到前一段时间卸载 Cuda8.0 安装 Cuda10.0 和 Tensorflow 1.13.0。感觉有必要总结一下安装过程。 卸载原有 Nvidia 驱动以及 Cuda # sudo apt remove --purge nvidia* # sudo">
+<meta name="twitter:description" content="前言 之前一段时间帮实验室的十几台电脑安装或者更新了Tensorflow环境，从最开始的安装 Cuda8.0 + Tensorflow 1.2.0 到前一段时间卸载 Cuda8.0 安装 Cuda10.0 和 Tensorflow 1.13.0。感觉有必要总结一下安装过程。">
 
 
 
@@ -290,9 +290,6 @@
   
 
   
-    
-
-  
 
   
     <div class="site-search">
@@ -340,6 +337,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -458,6 +458,7 @@
       
         <h2 id="前言">前言</h2>
 <p>之前一段时间帮实验室的十几台电脑安装或者更新了Tensorflow环境，从最开始的安装 Cuda8.0 + Tensorflow 1.2.0 到前一段时间卸载 Cuda8.0 安装 Cuda10.0 和 Tensorflow 1.13.0。感觉有必要总结一下安装过程。</p>
+<a id="more"></a>
 <h2 id="卸载原有-nvidia-驱动以及-cuda">卸载原有 Nvidia 驱动以及 Cuda</h2>
 <pre><code># sudo apt remove --purge nvidia*
 # sudo apt remove --purge cuda
@@ -869,7 +870,9 @@ sess = tf.Session()</code></pre>
   
 
 
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
 
 
