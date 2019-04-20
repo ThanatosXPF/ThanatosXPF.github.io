@@ -359,6 +359,419 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/13/leetcode162-FindPeakElements/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mors">
+      <meta itemprop="description" content="不忘初心，方得始终">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="流水">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/06/13/leetcode162-FindPeakElements/" class="post-title-link" itemprop="url">Leetcode 162. Find Peak Element</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-13 17:36:51" itemprop="dateCreated datePublished" datetime="2018-06-13T17:36:51+08:00">2018-06-13</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题描述"><strong>问题描述</strong></h2>
+<p>A peak element is an element that is greater than its neighbors.</p>
+<p>Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index.</p>
+<p>The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.</p>
+<p>You may imagine that nums[-1] = nums[n] = -∞.</p>
+<p>Example 1:</p>
+<pre><code>Input: nums = [1,2,3,1]
+Output: 2
+Explanation: 3 is a peak element and your function should return the index number 2.</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: nums = [1,2,1,3,5,6,4]
+Output: 1 or 5
+Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.</code></pre>
+<p>Note:</p>
+<p>Your solution should be in logarithmic complexity.</p>
+<h2 id="解决思路"><strong>解决思路</strong></h2>
+<p>因为题目要求对数复杂度，而且是一个查找问题，直觉使用二分查找。与二分查找的不同在于对high重新赋值为mid而不是mid-1，因为我们希望mid在 <code>nums[mid] &gt; nums[mid+1]</code> 的同时再比较一次 <code>nums[mid-1] 和 nums[mid]</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findPeakElement</span><span class="params">(self, nums: <span class="string">'List[int]'</span>)</span> -&gt; 'int':</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        low, high = <span class="number">0</span>, n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> low &lt; high:</span><br><span class="line">            mid = (low+high)//<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt; nums[mid+<span class="number">1</span>]:</span><br><span class="line">                low = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                high = mid</span><br><span class="line">        <span class="keyword">return</span> low</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/10/Linux挂载硬盘/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mors">
+      <meta itemprop="description" content="不忘初心，方得始终">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="流水">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/06/10/Linux挂载硬盘/" class="post-title-link" itemprop="url">Linux挂载硬盘</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-10 11:55:18" itemprop="dateCreated datePublished" datetime="2018-06-10T11:55:18+08:00">2018-06-10</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Technique/" itemprop="url" rel="index"><span itemprop="name">Technique</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="linux-挂载多块大容量硬盘">Linux 挂载多块大容量硬盘</h1>
+<h2 id="前言">前言</h2>
+<p>最近实验室采购了十台服务器，每台服务器配备了4块4T机械硬盘，本文记录了硬盘的挂载过程，以及虚拟存储工具 mhddfs 的使用。</p>
+<p>4块机械硬盘分别为 /dev/sda, /dev/sdb, /dev/sdc, /dev/sdd.</p>
+<h2 id="步骤">步骤</h2>
+<ul>
+<li>查看硬盘信息</li>
+<li>查看挂载信息</li>
+<li>分区命令</li>
+<li>格式化分区</li>
+<li>开机自动挂载</li>
+<li>多硬盘合并挂载 mhddfs</li>
+</ul>
+<h2 id="查看硬盘信息">查看硬盘信息</h2>
+<p>可以使用 <code>fdisk</code> 命令，fdisk 命令可以观察硬盘实体使用情况。</p>
+<pre><code>$ sudo fdisk -lh</code></pre>
+<p>通过命令可以看到目前系统中有哪些硬盘，以及它们各自的分区。</p>
+<h2 id="查看挂载信息">查看挂载信息</h2>
+<p>通过 <code>df</code> 命令可以查看硬盘的挂载信息。</p>
+<pre><code>$ df -lh
+Filesystem                   Size  Used Avail Use% Mounted on
+udev                          32G     0   32G   0% /dev
+tmpfs                        6.3G   18M  6.3G   1% /run
+/dev/mapper/ubuntu--vg-root  869G   63G  763G   8% /
+tmpfs                         32G     0   32G   0% /dev/shm
+tmpfs                        5.0M  4.0K  5.0M   1% /run/lock
+tmpfs                         32G     0   32G   0% /sys/fs/cgroup
+/dev/nvme0n1p2               473M  149M  301M  34% /boot
+/dev/nvme0n1p1               511M  3.6M  508M   1% /boot/efi
+tmpfs                        6.3G     0  6.3G   0% /run/user/1000</code></pre>
+<p>可以看到目前系统中仅挂载了一块固态硬盘。</p>
+<h2 id="分区命令">分区命令</h2>
+<p><code>fdisk</code> 命令不仅可以用于观察硬盘实体使用情况，也可以对硬盘进行分区。但 <code>fdisk</code> 命令进行分区最多仅支持2T容量。所以对于4T硬盘，可以使用 <code>parted</code> 命令进行分区。</p>
+<p><code>parted</code> 命令是由GNU组织开发的一款功能强大的磁盘分区和分区大小调整工具，与 <code>fdisk</code> 不同，它支持调整分区的大小。作为一种设计用于Linux的工具，它没有构建成处理与 <code>fdisk</code> 关联的多种分区类型，但是，它可以处理最常见的分区格式，包括：ext2、ext3、fat16、fat32、NTFS、ReiserFS、JFS、XFS、UFS、HFS以及Linux交换分区。</p>
+<pre><code>$ sudo parted /dev/sda
+GNU Parted 3.2
+Using /dev/sda
+Welcome to GNU Parted! Type &#39;help&#39; to view a list of commands.
+(parted) mklabel gpt
+(parted) unit TB
+(parted) mkpart primary 0 4
+(parted) p
+GNU Parted 3.2
+Using /dev/sda
+Welcome to GNU Parted! Type &#39;help&#39; to view a list of commands.
+Model: ATA ST4000NM0035-1V4 (scsi)
+Disk /dev/sda: 4001GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size    File system  Name     Flags
+1      1049kB  4001GB  4001GB               primary</code></pre>
+<h2 id="格式化分区">格式化分区</h2>
+<p>使用 <code>mkfs</code> 命令，将创建好的分区格式化为 ext4 格式。</p>
+<pre><code>$ sudo mkfs.ext4 /dev/sda1</code></pre>
+<h2 id="开机自动挂载">开机自动挂载</h2>
+<p>通过 <code>blkid</code> 命令查看硬盘UUID</p>
+<pre><code>$ sudo blkid
+/dev/nvme0n1p1: UUID=&quot;6062-5002&quot; TYPE=&quot;vfat&quot; PARTUUID=&quot;23340a62-728f-4a13-855d-12783a6745d9&quot;
+/dev/nvme0n1p2: UUID=&quot;058309c1-a4f4-42d4-a011-9c59f331d327&quot; TYPE=&quot;ext2&quot; PARTUUID=&quot;c3b8246a-4753-414d-be15-1dd85840a949&quot;
+/dev/nvme0n1p3: UUID=&quot;wr77H2-n6Qt-BKuF-4IdY-IE2S-4fFk-Du7c06&quot; TYPE=&quot;LVM2_member&quot; PARTUUID=&quot;4f0227e4-d948-4dee-9e54-ba022051073b&quot;
+/dev/mapper/ubuntu--vg-root: UUID=&quot;5fb8ed79-a83b-4d34-a6d3-d554dfeb3d2e&quot; TYPE=&quot;ext4&quot;
+/dev/sda1: UUID=&quot;a520f550-1807-475d-8737-72733444d48f&quot; TYPE=&quot;ext4&quot; PARTLABEL=&quot;primary&quot; PARTUUID=&quot;94dbf9bb-924d-40a5-99b1-a1116801aeaa&quot;
+/dev/sdb1: UUID=&quot;085423aa-4578-4dda-a7d5-5c6b85feadb2&quot; TYPE=&quot;ext4&quot; PARTLABEL=&quot;primary&quot; PARTUUID=&quot;47eee203-601d-48d4-937c-ff45a9a17222&quot;
+/dev/sdc1: UUID=&quot;ade474c4-e8b2-4cc6-804d-802a283f164d&quot; TYPE=&quot;ext4&quot; PARTLABEL=&quot;primary&quot; PARTUUID=&quot;2885a317-a2b4-4d0c-aebb-97c6fb8c56e3&quot;
+/dev/sdd1: UUID=&quot;ce9dda21-86ac-4c6b-aac3-5d464d348e52&quot; TYPE=&quot;ext4&quot; PARTLABEL=&quot;primary&quot; PARTUUID=&quot;f48c33d8-3170-4802-bab5-ee1e0add763c&quot;
+/dev/mapper/ubuntu--vg-swap_1: UUID=&quot;4f617909-ed55-45ba-85ce-b1d211b44fca&quot; TYPE=&quot;swap&quot;
+/dev/nvme0n1: PTUUID=&quot;2fff60a6-1c9d-43f2-9b4f-182dced404e2&quot; PTTYPE=&quot;gpt&quot;</code></pre>
+<p>修改 /etc/fstab 文件，加入表项</p>
+<pre><code>UUID= /mnt/A ext4 defaults 0 2</code></pre>
+<p>将挂载硬盘的UUID填入。在相应位置创建挂载点（/mnt/A）并修改权限。 使用命令 <code>mount</code> 挂载硬盘</p>
+<pre><code>$ sudo mount /dev/sda1</code></pre>
+<h2 id="多硬盘合并挂载-mhddfs">多硬盘合并挂载 <code>mhddfs</code></h2>
+<p>现在已经将4块硬盘都挂载在了相应的文件夹下 (/mnt/A /mnt/B /mnt/C /mnt/D) 但是由于过多的挂载点导致文件分散在不同的目录下，对于访问文件十分不利。所以可以使用 <code>mhddfs</code> 将多个硬盘挂载在一个路径下。也称作 Linux 分区合并，即 Linux 挂载点合并。</p>
+<p><code>mhddfs</code> 是一个 FUSE 系统模块，它可以将多个 Linux 分区(挂载点)或硬盘组合成一个虚拟驱动器。这样我们就可以将文件丢到 <code>mhddfs</code> 创建的虚拟驱动器中，它会自动将文件分布到不同的挂载点中，而用户看起来就像是放到了一个统一的路径。</p>
+<p><code>mhddfs</code> 安装</p>
+<pre><code>$ sudo apt install mhddfs</code></pre>
+<p>创建挂载点并修改权限后，使用命令</p>
+<pre><code>$ sudo mhddfs /mnt/A,/mnt/B,/mnt/C,/mnt/D /extend -o allow_other</code></pre>
+<p>在 /etc/fstab 中写入</p>
+<pre><code>mhddfs#/mnt/A,/mnt/B,/mnt/C,/mnt/D /extend fuse defaults,allow_other 0 0</code></pre>
+<p>以实现开机自动挂载</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/05/Samba/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -586,349 +999,6 @@ $ sudo smbpasswd -a                             # 根据设置的valid user，�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/28/leetcode75-SortColor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mors">
-      <meta itemprop="description" content="不忘初心，方得始终">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="流水">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/05/28/leetcode75-SortColor/" class="post-title-link" itemprop="url">Leetcode 75. Sort Colors</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-28 10:49:16" itemprop="dateCreated datePublished" datetime="2018-05-28T10:49:16+08:00">2018-05-28</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="问题描述"><strong>问题描述</strong></h2>
-<p>Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
-<p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.</p>
-<p>Note: You are not suppose to use the library's sort function for this problem.</p>
-<p>Example:</p>
-<pre><code>Input: [2,0,2,1,1,0]
-Output: [0,0,1,1,2,2]</code></pre>
-<p>Follow up:</p>
-<ul>
-<li>A rather straight forward solution is a two-pass algorithm using counting sort.</li>
-<li>First, iterate the array counting number of 0's, 1's, and 2's, then overwrite array with total number of 0's, then 1's and followed by 2's. Could you come up with a one-pass algorithm using only constant space?</li>
-</ul>
-<h2 id="解题思路"><strong>解题思路</strong></h2>
-<p>基本按照计数排序的思路，先遍历统计0、1、2的个数。根据个数重新对数组赋值。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortColors</span><span class="params">(self, nums: List[int])</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        count = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            count[i] += <span class="number">1</span></span><br><span class="line">        print(count)</span><br><span class="line">        print(nums[:count[i]])</span><br><span class="line">        nums[:count[<span class="number">0</span>]] = [<span class="number">0</span>]*count[<span class="number">0</span>]</span><br><span class="line">        nums[count[<span class="number">0</span>]:count[<span class="number">1</span>]+count[<span class="number">0</span>]] = [<span class="number">1</span>]*count[<span class="number">1</span>]</span><br><span class="line">        nums[count[<span class="number">1</span>]+count[<span class="number">0</span>]:] = [<span class="number">2</span>]*count[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="进阶思路"><strong>进阶思路</strong></h2>
-<p>上述做法貌似需要 <span class="math inline">\(O(n)\)</span> 的额外存储空间，如果 <span class="math inline">\(O(1)\)</span> 来做又会导致遍历两次。因此可以考虑类似快速排序的做法，两个指针分别指向头尾，一个指针从左到右移动。。将遇到的2移动到最右边，遇到的0移动到最左边。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortColors</span><span class="params">(self, nums: <span class="string">'List[int]'</span>)</span> -&gt; '<span class="keyword">None</span>':</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        r = len(nums) - <span class="number">1</span></span><br><span class="line">        i=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i&lt;=r:</span><br><span class="line">            <span class="keyword">if</span> nums[i] == <span class="number">2</span> <span class="keyword">and</span> i&lt;r:</span><br><span class="line">                nums[i], nums[r] = nums[r], nums[i]</span><br><span class="line">                r-=<span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[i] == <span class="number">0</span> <span class="keyword">and</span> i&gt;l:</span><br><span class="line">                nums[i], nums[l] = nums[l], nums[i]</span><br><span class="line">                l+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                i+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/24/leetcode56/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mors">
-      <meta itemprop="description" content="不忘初心，方得始终">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="流水">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/05/24/leetcode56/" class="post-title-link" itemprop="url">Leetcode 56. Merge Intervals</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-24 11:55:18" itemprop="dateCreated datePublished" datetime="2018-05-24T11:55:18+08:00">2018-05-24</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="题目描述"><strong>题目描述</strong></h2>
-<p>Given a collection of intervals, merge all overlapping intervals.</p>
-<p>Example 1:</p>
-<pre><code>Input: [[1,3],[2,6],[8,10],[15,18]]
-Output: [[1,6],[8,10],[15,18]]
-Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].</code></pre>
-<p>Example 2:</p>
-<pre><code>Input: [[1,4],[4,5]]
-Output: [[1,5]]
-Explanation: Intervals [1,4] and [4,5] are considered overlapping.</code></pre>
-<h2 id="解题思路"><strong>解题思路</strong></h2>
-<p>将所有的interval按开始时间排序，检测是否重叠，若重叠，检测结束时间。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, intervals: List[List[int]])</span> -&gt; List[List[int]]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> intervals:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        <span class="keyword">if</span> len(intervals) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> intervals</span><br><span class="line">        intervals = sorted(intervals)</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> intervals:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> res <span class="keyword">or</span> res[<span class="number">-1</span>][<span class="number">1</span>] &lt; i[<span class="number">0</span>]:</span><br><span class="line">                res.append(i)</span><br><span class="line">            <span class="keyword">elif</span> res[<span class="number">-1</span>][<span class="number">1</span>] &lt; i[<span class="number">1</span>]:</span><br><span class="line">                res[<span class="number">-1</span>][<span class="number">1</span>] = i[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -977,7 +1047,7 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.</code></pre>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1047,7 +1117,11 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.</code></pre>
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

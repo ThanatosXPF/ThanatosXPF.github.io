@@ -99,7 +99,7 @@
   <meta name="description" content="不忘初心，方得始终">
 <meta property="og:type" content="website">
 <meta property="og:title" content="流水">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/Environment/index.html">
 <meta property="og:site_name" content="流水">
 <meta property="og:description" content="不忘初心，方得始终">
 <meta property="og:locale" content="zh-CN">
@@ -113,7 +113,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/page/4/">
+  <link rel="canonical" href="http://yoursite.com/tags/Environment/">
 
 
 
@@ -123,7 +123,7 @@
   };
 </script>
 
-  <title>流水</title>
+  <title>标签: Environment | 流水</title>
   
 
 
@@ -171,8 +171,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,7 +226,7 @@
         
         
           
-          <li class="menu-item menu-item-tags">
+          <li class="menu-item menu-item-tags menu-item-active">
 
     
     
@@ -291,6 +290,25 @@
   
     
 
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
   
 
   
@@ -342,526 +360,53 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
+
+  
+  
+  
+  <div class="post-block tag">
+
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>Environment<small>标签</small>
+        </h1>
+      </div>
+
       
-
-  
-
-  
-  
-  
-
-  
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/28/leetcode75-SortColor/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mors">
-      <meta itemprop="description" content="不忘初心，方得始终">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="流水">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+          <a class="post-title-link" href="/2019/04/02/Ubuntu16.04+cuda10/" itemprop="url">
+            
+              <span itemprop="name">Ubuntu 16.04 cuda10.0 cudnn 7.4.1 tensorflow 1.13.1 环境配置</span>
+            
+          </a>
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/05/28/leetcode75-SortColor/" class="post-title-link" itemprop="url">Leetcode 75. Sort Colors</a>
-              
-            
-          </h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-04-02T22:17:23+08:00" content="2019-04-02">
+          04-02
+        </time>
+      </div>
 
-            
-            
-            
+    </header>
+  </article>
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
 
-              
-                
-              
-
-              <time title="创建时间：2018-05-28 10:49:16" itemprop="dateCreated datePublished" datetime="2018-05-28T10:49:16+08:00">2018-05-28</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="问题描述"><strong>问题描述</strong></h2>
-<p>Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
-<p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.</p>
-<p>Note: You are not suppose to use the library's sort function for this problem.</p>
-<p>Example:</p>
-<pre><code>Input: [2,0,2,1,1,0]
-Output: [0,0,1,1,2,2]</code></pre>
-<p>Follow up:</p>
-<ul>
-<li>A rather straight forward solution is a two-pass algorithm using counting sort.</li>
-<li>First, iterate the array counting number of 0's, 1's, and 2's, then overwrite array with total number of 0's, then 1's and followed by 2's. Could you come up with a one-pass algorithm using only constant space?</li>
-</ul>
-<h2 id="解题思路"><strong>解题思路</strong></h2>
-<p>基本按照计数排序的思路，先遍历统计0、1、2的个数。根据个数重新对数组赋值。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortColors</span><span class="params">(self, nums: List[int])</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        count = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            count[i] += <span class="number">1</span></span><br><span class="line">        print(count)</span><br><span class="line">        print(nums[:count[i]])</span><br><span class="line">        nums[:count[<span class="number">0</span>]] = [<span class="number">0</span>]*count[<span class="number">0</span>]</span><br><span class="line">        nums[count[<span class="number">0</span>]:count[<span class="number">1</span>]+count[<span class="number">0</span>]] = [<span class="number">1</span>]*count[<span class="number">1</span>]</span><br><span class="line">        nums[count[<span class="number">1</span>]+count[<span class="number">0</span>]:] = [<span class="number">2</span>]*count[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="进阶思路"><strong>进阶思路</strong></h2>
-<p>上述做法貌似需要 <span class="math inline">\(O(n)\)</span> 的额外存储空间，如果 <span class="math inline">\(O(1)\)</span> 来做又会导致遍历两次。因此可以考虑类似快速排序的做法，两个指针分别指向头尾，一个指针从左到右移动。。将遇到的2移动到最右边，遇到的0移动到最左边。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortColors</span><span class="params">(self, nums: <span class="string">'List[int]'</span>)</span> -&gt; '<span class="keyword">None</span>':</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        r = len(nums) - <span class="number">1</span></span><br><span class="line">        i=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i&lt;=r:</span><br><span class="line">            <span class="keyword">if</span> nums[i] == <span class="number">2</span> <span class="keyword">and</span> i&lt;r:</span><br><span class="line">                nums[i], nums[r] = nums[r], nums[i]</span><br><span class="line">                r-=<span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[i] == <span class="number">0</span> <span class="keyword">and</span> i&gt;l:</span><br><span class="line">                nums[i], nums[l] = nums[l], nums[i]</span><br><span class="line">                l+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                i+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
-
-          
-        
       
     </div>
 
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
   
   
   
-  </article>
-
-
-    
-      
 
   
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/24/leetcode56/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mors">
-      <meta itemprop="description" content="不忘初心，方得始终">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="流水">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/05/24/leetcode56/" class="post-title-link" itemprop="url">Leetcode 56. Merge Intervals</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-24 11:55:18" itemprop="dateCreated datePublished" datetime="2018-05-24T11:55:18+08:00">2018-05-24</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="题目描述"><strong>题目描述</strong></h2>
-<p>Given a collection of intervals, merge all overlapping intervals.</p>
-<p>Example 1:</p>
-<pre><code>Input: [[1,3],[2,6],[8,10],[15,18]]
-Output: [[1,6],[8,10],[15,18]]
-Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].</code></pre>
-<p>Example 2:</p>
-<pre><code>Input: [[1,4],[4,5]]
-Output: [[1,5]]
-Explanation: Intervals [1,4] and [4,5] are considered overlapping.</code></pre>
-<h2 id="解题思路"><strong>解题思路</strong></h2>
-<p>将所有的interval按开始时间排序，检测是否重叠，若重叠，检测结束时间。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, intervals: List[List[int]])</span> -&gt; List[List[int]]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> intervals:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        <span class="keyword">if</span> len(intervals) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> intervals</span><br><span class="line">        intervals = sorted(intervals)</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> intervals:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> res <span class="keyword">or</span> res[<span class="number">-1</span>][<span class="number">1</span>] &lt; i[<span class="number">0</span>]:</span><br><span class="line">                res.append(i)</span><br><span class="line">            <span class="keyword">elif</span> res[<span class="number">-1</span>][<span class="number">1</span>] &lt; i[<span class="number">1</span>]:</span><br><span class="line">                res[<span class="number">-1</span>][<span class="number">1</span>] = i[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/23/leetcode34-FindFirstandLastPositionofElementInSortedArray/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mors">
-      <meta itemprop="description" content="不忘初心，方得始终">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="流水">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/05/23/leetcode34-FindFirstandLastPositionofElementInSortedArray/" class="post-title-link" itemprop="url">Leetcode 34. Find First and Last Position of Element in Sorted Array</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-23 14:27:20" itemprop="dateCreated datePublished" datetime="2018-05-23T14:27:20+08:00">2018-05-23</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="问题描述"><strong>问题描述</strong></h2>
-<p>Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.</p>
-<p>Your algorithm's runtime complexity must be in the order of <span class="math inline">\(O(log n)\)</span>.</p>
-<p>If the target is not found in the array, return [-1, -1].</p>
-<p>Example 1:</p>
-<pre><code>Input: nums = [5,7,7,8,8,10], target = 8
-Output: [3,4]</code></pre>
-<p>Example 2:</p>
-<pre><code>Input: nums = [5,7,7,8,8,10], target = 6
-Output: [-1,-1]</code></pre>
-<h2 id="解题思路"><strong>解题思路</strong></h2>
-<p>对数时间复杂度，优先考虑二分查找，先找出目标数的左界。通常做法，二分查找对于右指针的更新改为mid而不是mid-1。然后查找target的右界，同样使用二分查找。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchRange</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; List[int]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">-1</span>,<span class="number">-1</span>]</span><br><span class="line">        n = len(nums)</span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        r = n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> l &lt; r:</span><br><span class="line">            m = (l + r) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[m] &lt; target:</span><br><span class="line">                l = m + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 对于有界的更新进行改动，这样可以保证找到的m一定是target左界</span></span><br><span class="line">                r = m</span><br><span class="line">        <span class="keyword">if</span> nums[l] != target: <span class="keyword">return</span> <span class="number">-1</span>, <span class="number">-1</span></span><br><span class="line">        left = l</span><br><span class="line">        l, r = left, n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> l &lt; r:</span><br><span class="line">            m = (l+r) // <span class="number">2</span> + <span class="number">1</span></span><br><span class="line">            <span class="comment"># 对条件进行改动，使其找到的是第一个非target，即为右界</span></span><br><span class="line">            <span class="keyword">if</span> nums[m] == target:</span><br><span class="line">                l = m</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                r = m<span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> left, l</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
@@ -1477,14 +1022,6 @@ Output: [-1,-1]</code></pre>
   
 
   
-  
-    
-      
-    
-      
-    
-      
-    
   
 
   
