@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="流水">
 <meta property="og:description" content="前言 之前一段时间帮实验室的十几台电脑安装或者更新了Tensorflow环境，从最开始的安装 Cuda8.0 + Tensorflow 1.2.0 到前一段时间卸载 Cuda8.0 安装 Cuda10.0 和 Tensorflow 1.13.0。感觉有必要总结一下安装过程。 卸载原有 Nvidia 驱动以及 Cuda # sudo apt remove --purge nvidia* # sudo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-20T14:24:44.132Z">
+<meta property="og:updated_time" content="2019-04-20T14:50:49.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 16.04 cuda10.0 cudnn 7.4.1 tensorflow 1.13.1 环境配置">
 <meta name="twitter:description" content="前言 之前一段时间帮实验室的十几台电脑安装或者更新了Tensorflow环境，从最开始的安装 Cuda8.0 + Tensorflow 1.2.0 到前一段时间卸载 Cuda8.0 安装 Cuda10.0 和 Tensorflow 1.13.0。感觉有必要总结一下安装过程。 卸载原有 Nvidia 驱动以及 Cuda # sudo apt remove --purge nvidia* # sudo">
@@ -462,7 +462,9 @@
 <pre><code># sudo apt remove --purge nvidia*
 # sudo apt remove --purge cuda
 # sudo apt autoclean</code></pre>
-<p>卸载完成后可以检查文件是否完全删除干净，路径 <code>/usr/local/</code> 如果没有看到 <code>cuda</code> 等文件夹则证明卸载完成。同时如果最初是使用的 deb 本地安装的 cuda，需要删除镜像源文件。 # cd /etc/apt/source.list.d # rm cuda*</p>
+<p>卸载完成后可以检查文件是否完全删除干净，路径 <code>/usr/local/</code> 如果没有看到 <code>cuda</code> 等文件夹则证明卸载完成。同时如果最初是使用的 deb 本地安装的 cuda，需要删除镜像源文件。</p>
+<pre><code># cd /etc/apt/source.list.d
+# rm cuda*</code></pre>
 <h2 id="禁用-nouveau">禁用 Nouveau</h2>
 <p>只有在禁用 Nouveau 的情况下才能顺利安装 Nvidia 驱动。首先</p>
 <pre><code># sudo vim /etc/modprobe.d/blacklist-nouveau.conf</code></pre>
