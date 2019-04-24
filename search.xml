@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>修复 mhddfs 崩溃的问题 (Transport endpoint is not connected)</title>
+      <link href="/2019/04/24/mhddfs-crash/"/>
+      <url>/2019/04/24/mhddfs-crash/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2><p>本文主要关于解决 <code>mhddfs</code> 1.39版本使用时遇到的bug问题（Transport endpoint is not connected），以及简要分析导致问题的原因。</p><a id="more"></a><p>去年使用 <code>mhddfs</code> 统合服务器上的多块大容量硬盘（<a href="https://mors.xyz/2018/06/10/Linux%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/" target="_blank" rel="noopener">链接</a>）。但是之后偶尔会出现由于大规模io（主要是写入，删除之类的操作）导致（或许） mhddfs 崩溃的问题。出现如下字样</p><pre><code>Transport endpoint is not connected</code></pre><p>此时运行 <code>ps auxw | grep mhddfs</code> 没有输出，mhddfs 已经停止运行。查看日志 <code>/var/log/kern.log</code> 发现 mhdfs 由于一个 <code>segfault</code> quit。</p><pre><code>mhddfs[11861]: segfault at 0 ip 0000000000404750 sp 00007f1100ff8a40 error 4 in mhddfs[400000+b000]</code></pre><p>由于挂载点失效，所有涉及向这个挂载点io的程序都会中断，而且该错误出现的莫名其妙，令人头秃。最近经过查阅发现这个 bug 已经被修复，经验证修复后暂未出现如同之前一样crash的情况。</p><h2 id="修复过程">修复过程</h2><p>安装依赖</p><pre><code>sudo apt install git fuse libfuse-dev libattr1-dev</code></pre><p>下载修复了 bug 的 mhddfs 源码并编译</p><pre><code>git clone https://github.com/vdudouyt/mhddfs-nosegfault/cd mhddfs-nosegfaultmakesudo cp mhddfs /usr/bin</code></pre><p>然后重新挂载</p><pre><code>sudo umount &lt;mount point&gt;sudo mount -a</code></pre><h2 id="原因分析">原因分析</h2><p>该错误仅出现在1.39版本，观察1.38到1.39的唯一一次 <a href="https://github.com/crass/mhddfs/commit/c62547d50a574ed9e3b04a8533be1c350b08c2ea" target="_blank" rel="noopener">commit</a> ,发现 <code>HASH_CLEAN</code> 存在一个 use after free 的问题 ( <a href="https://github.com/crass/mhddfs/blob/c62547d50a574ed9e3b04a8533be1c350b08c2ea/src/main.c#L246-L251" target="_blank" rel="noopener">here</a> )，该问题代码会由于调用 <code>HASH_CLEAR</code> 导致访问一个已经被 <code>free</code> 的 <code>node</code>。</p><h2 id="参考">参考</h2><ul><li><a href="https://nramkumar.org/tech/blog/2015/09/23/mhddfs-crash-with-ubuntu-14-04/" target="_blank" rel="noopener">mhddfs crash with Ubuntu 14.04 Ram's Tech Blog</a></li><li><a href="https://github.com/vdudouyt/mhddfs-nosegfault" target="_blank" rel="noopener">mhdffs-nosegfault</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Technique </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Ubuntu </tag>
+            
+            <tag> Mhddfs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ubuntu 16.04 cuda10.0 cudnn 7.4.1 tensorflow 1.13.1 环境配置</title>
       <link href="/2019/04/02/Ubuntu16.04+cuda10/"/>
       <url>/2019/04/02/Ubuntu16.04+cuda10/</url>

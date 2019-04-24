@@ -96,16 +96,18 @@
 
 
 
-  <meta name="description" content="不忘初心，方得始终">
-<meta property="og:type" content="website">
-<meta property="og:title" content="流水">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="前言 本文主要关于解决 mhddfs 1.39版本使用时遇到的bug问题（Transport endpoint is not connected），以及简要分析导致问题的原因。">
+<meta name="keywords" content="Ubuntu,Mhddfs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="修复 mhddfs 崩溃的问题 (Transport endpoint is not connected)">
+<meta property="og:url" content="http://yoursite.com/2019/04/24/mhddfs-crash/index.html">
 <meta property="og:site_name" content="流水">
-<meta property="og:description" content="不忘初心，方得始终">
+<meta property="og:description" content="前言 本文主要关于解决 mhddfs 1.39版本使用时遇到的bug问题（Transport endpoint is not connected），以及简要分析导致问题的原因。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-24T15:55:33.981Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="流水">
-<meta name="twitter:description" content="不忘初心，方得始终">
+<meta name="twitter:title" content="修复 mhddfs 崩溃的问题 (Transport endpoint is not connected)">
+<meta name="twitter:description" content="前言 本文主要关于解决 mhddfs 1.39版本使用时遇到的bug问题（Transport endpoint is not connected），以及简要分析导致问题的原因。">
 
 
 
@@ -113,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/archives/2019/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/24/mhddfs-crash/">
 
 
 
@@ -123,7 +125,7 @@
   };
 </script>
 
-  <title>归档 | 流水</title>
+  <title>修复 mhddfs 崩溃的问题 (Transport endpoint is not connected) | 流水</title>
   
 
 
@@ -171,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -260,7 +262,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -338,136 +340,219 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 16 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/24/mhddfs-crash/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mors">
+      <meta itemprop="description" content="不忘初心，方得始终">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="流水">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/04/24/mhddfs-crash/" itemprop="url">
-            
-              <span itemprop="name">修复 mhddfs 崩溃的问题 (Transport endpoint is not connected)</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">修复 mhddfs 崩溃的问题 (Transport endpoint is not connected)
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-24T21:47:33+08:00" content="2019-04-24">
-          04-24
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-24 21:47:33" itemprop="dateCreated datePublished" datetime="2019-04-24T21:47:33+08:00">2019-04-24</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Technique/" itemprop="url" rel="index"><span itemprop="name">Technique</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/02/Ubuntu16.04+cuda10/" itemprop="url">
-            
-              <span itemprop="name">Ubuntu 16.04 cuda10.0 cudnn 7.4.1 tensorflow 1.13.1 环境配置</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-02T22:17:23+08:00" content="2019-04-02">
-          04-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <h2 id="前言">前言</h2>
+<p>本文主要关于解决 <code>mhddfs</code> 1.39版本使用时遇到的bug问题（Transport endpoint is not connected），以及简要分析导致问题的原因。</p>
+<a id="more"></a>
+<p>去年使用 <code>mhddfs</code> 统合服务器上的多块大容量硬盘（<a href="https://mors.xyz/2018/06/10/Linux%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/" target="_blank" rel="noopener">链接</a>）。但是之后偶尔会出现由于大规模io（主要是写入，删除之类的操作）导致（或许） mhddfs 崩溃的问题。出现如下字样</p>
+<pre><code>Transport endpoint is not connected</code></pre>
+<p>此时运行 <code>ps auxw | grep mhddfs</code> 没有输出，mhddfs 已经停止运行。查看日志 <code>/var/log/kern.log</code> 发现 mhdfs 由于一个 <code>segfault</code> quit。</p>
+<pre><code>mhddfs[11861]: segfault at 0 ip 0000000000404750 sp 00007f1100ff8a40 error 4 in mhddfs[400000+b000]</code></pre>
+<p>由于挂载点失效，所有涉及向这个挂载点io的程序都会中断，而且该错误出现的莫名其妙，令人头秃。最近经过查阅发现这个 bug 已经被修复，经验证修复后暂未出现如同之前一样crash的情况。</p>
+<h2 id="修复过程">修复过程</h2>
+<p>安装依赖</p>
+<pre><code>sudo apt install git fuse libfuse-dev libattr1-dev</code></pre>
+<p>下载修复了 bug 的 mhddfs 源码并编译</p>
+<pre><code>git clone https://github.com/vdudouyt/mhddfs-nosegfault/
+cd mhddfs-nosegfault
+make
+sudo cp mhddfs /usr/bin</code></pre>
+<p>然后重新挂载</p>
+<pre><code>sudo umount &lt;mount point&gt;
+sudo mount -a</code></pre>
+<h2 id="原因分析">原因分析</h2>
+<p>该错误仅出现在1.39版本，观察1.38到1.39的唯一一次 <a href="https://github.com/crass/mhddfs/commit/c62547d50a574ed9e3b04a8533be1c350b08c2ea" target="_blank" rel="noopener">commit</a> ,发现 <code>HASH_CLEAN</code> 存在一个 use after free 的问题 ( <a href="https://github.com/crass/mhddfs/blob/c62547d50a574ed9e3b04a8533be1c350b08c2ea/src/main.c#L246-L251" target="_blank" rel="noopener">here</a> )，该问题代码会由于调用 <code>HASH_CLEAR</code> 导致访问一个已经被 <code>free</code> 的 <code>node</code>。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://nramkumar.org/tech/blog/2015/09/23/mhddfs-crash-with-ubuntu-14-04/" target="_blank" rel="noopener">mhddfs crash with Ubuntu 14.04 Ram's Tech Blog</a></li>
+<li><a href="https://github.com/vdudouyt/mhddfs-nosegfault" target="_blank" rel="noopener">mhdffs-nosegfault</a></li>
+</ul>
+
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+          
+            <a href="/tags/Mhddfs/" rel="tag"># Mhddfs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/02/Ubuntu16.04+cuda10/" rel="next" title="Ubuntu 16.04 cuda10.0 cudnn 7.4.1 tensorflow 1.13.1 环境配置">
+                <i class="fa fa-chevron-left"></i> Ubuntu 16.04 cuda10.0 cudnn 7.4.1 tensorflow 1.13.1 环境配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -487,8 +572,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -608,6 +702,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修复过程"><span class="nav-number">2.</span> <span class="nav-text">修复过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因分析"><span class="nav-number">3.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -732,6 +843,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -747,6 +862,8 @@
 
   
 
+
+  
 
 
   
