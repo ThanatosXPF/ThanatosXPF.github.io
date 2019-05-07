@@ -96,16 +96,18 @@
 
 
 
-  <meta name="description" content="不忘初心，方得始终">
-<meta property="og:type" content="website">
-<meta property="og:title" content="流水">
-<meta property="og:url" content="http://yoursite.com/tags/Boosting/index.html">
+  <meta name="description" content="前言 本文主要介绍XGBoost这一超快集成训练模型。该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数去预测一个样本的分数，最后将每棵树对应的分数加起来就是该样本的预测值。">
+<meta name="keywords" content="Algorithm,Machine Learning,Boosting,集成学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Boosting算法族三 XGBoost">
+<meta property="og:url" content="http://yoursite.com/2017/10/30/Boosting3/index.html">
 <meta property="og:site_name" content="流水">
-<meta property="og:description" content="不忘初心，方得始终">
+<meta property="og:description" content="前言 本文主要介绍XGBoost这一超快集成训练模型。该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数去预测一个样本的分数，最后将每棵树对应的分数加起来就是该样本的预测值。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-07T14:40:40.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="流水">
-<meta name="twitter:description" content="不忘初心，方得始终">
+<meta name="twitter:title" content="Boosting算法族三 XGBoost">
+<meta name="twitter:description" content="前言 本文主要介绍XGBoost这一超快集成训练模型。该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数去预测一个样本的分数，最后将每棵树对应的分数加起来就是该样本的预测值。">
 
 
 
@@ -113,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/Boosting/">
+  <link rel="canonical" href="http://yoursite.com/2017/10/30/Boosting3/">
 
 
 
@@ -123,7 +125,7 @@
   };
 </script>
 
-  <title>标签: Boosting | 流水</title>
+  <title>Boosting算法族三 XGBoost | 流水</title>
   
 
 
@@ -171,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,7 +228,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -338,132 +340,347 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Boosting<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/Boosting3/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mors">
+      <meta itemprop="description" content="不忘初心，方得始终">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="流水">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2017/10/30/Boosting3/" itemprop="url">
-            
-              <span itemprop="name">Boosting算法族三 XGBoost</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Boosting算法族三 XGBoost
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-10-30T00:12:31+08:00" content="2017-10-30">
-          10-30
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-10-30 00:12:31" itemprop="dateCreated datePublished" datetime="2017-10-30T00:12:31+08:00">2017-10-30</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2017/10/18/Boosting2/" itemprop="url">
-            
-              <span itemprop="name">Boosting算法族二 BT, GBDT</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-10-18T22:23:51+08:00" content="2017-10-18">
-          10-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2017/10/09/Boosting1/" itemprop="url">
-            
-              <span itemprop="name">Boosting算法族一 Adaboost</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-10-09T21:10:19+08:00" content="2017-10-09">
-          10-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h2 id="前言"><strong>前言</strong></h2>
+<p>本文主要介绍XGBoost这一超快集成训练模型。该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数去预测一个样本的分数，最后将每棵树对应的分数加起来就是该样本的预测值。</p>
+<a id="more"></a>
+<h2 id="推导"><strong>推导</strong></h2>
+<p>目标函数定义</p>
+<p><span class="math display">\[
+L(\phi)=\sum_i l(y_i,\hat{y}_i)+\sum_k \Omega(f_k) \\ \Omega(f_k)=\gamma T+\frac{1}{2}\lambda \|w\|^2
+\]</span></p>
+<p>其中 <span class="math inline">\(\sum_i l(y_i,\hat{y}_i)\)</span> 代表损失函数，<span class="math inline">\(\sum_k \Omega(f_k)\)</span> 代表正则化项。<span class="math inline">\(\hat{y}_i\)</span> 代表预测输出， <span class="math inline">\(y_i\)</span> 代表真实值，<span class="math inline">\(f_k\)</span> 代表第 k 棵树， <span class="math inline">\(T\)</span> 为树叶子节点数，<span class="math inline">\(\omega\)</span> 为叶子权重值，<span class="math inline">\(\gamma\)</span> 为正则化系数。</p>
+<p><span class="math display">\[
+\hat{y}_i=\phi(x_i)=\sum_{k=1}^Kf_k(x_i) \\
+where F=\{f(x)=w_{q(x)}\}  (q:R^m \rightarrow T,w \in R^T)
+\]</span></p>
+<p>其中，<span class="math inline">\(w_{q(x)}\)</span> 是叶子节点 <span class="math inline">\(q\)</span> 的分数，函数 <span class="math inline">\(q(x)\)</span> 将样本 <span class="math inline">\(x\)</span> 映射到树上的某一叶子节点。<span class="math inline">\(f(x)\)</span> 是一颗回归树。对于任一样本 <span class="math inline">\(x\)</span>，其分值为 <span class="math inline">\(w_{q(x)}\)</span>。</p>
+<p>目标函数可以重写为</p>
+<p><span class="math display">\[
+Obj^{(t)}=\sum_{i=1}^{n} l(y_i,\hat{y}^{(t-1)}+f_t(x_i))+\Omega(f_t)+constant
+\]</span></p>
+<p>接下来就是最小化目标函数。XGBoost 利用其泰勒二阶展开来近似。</p>
+<p><span class="math display">\[
+Obj^{(t)} \simeq \sum_{i=1}^n [l(y_i,\hat{y}^{(t-1)})+g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)] + \Omega(f_t) + constant \\
+g_i=\frac{\partial l(y_i,\hat{y}^{(t-1)})}{\partial \hat{y}^{(t-1)}}, h_i =\frac{\partial^2 l(y_i,\hat{y}^{(t-1)})}{\partial {\hat{y}^{(t-1)}}^2}
+\]</span></p>
+<p>此处为什么使用二阶偏导数呢？</p>
+<p>首先我们需要明确 boosting 每一轮迭代都是在优化什么。换言之，我们都在用损失函数 <span class="math inline">\(l\)</span> 干什么。我们看 Boosting 的框架，无论是 GBDT 还是 Adaboost，其在每一轮的迭代过程中并没有理会损失函数具体是什么，仅仅用到了损失函数的一阶导数。仅仅用一阶导数的问题就是我们无法保证我们找到的是全局最优。除非问题本身 <span class="math inline">\(f(x)\)</span> 是强凸的。每次迭代相当于最优化负梯度。即下式中的 <span class="math inline">\(\nabla f(x^{(i)})\)</span>，因为梯度为负所以加负号， <span class="math inline">\(c\)</span> 代表学习率。</p>
+<p><span class="math display">\[
+x_c^{(i+1)}=x^{(i)}-c\nabla f(x^{(i)})
+\]</span></p>
+<p>大家都能看出这就是一般长假的呢 Linear Regression 的 Stochastic Gradient Descend 梯度更新公式。既然 GBDT 用的是 SGD，那还有其他的梯度更新方式吗？所以我们想到了牛顿法。或许可以说，XGBoost 是利用了牛顿法进行的梯度更新。</p>
+<p>首先看泰勒展开式：</p>
+<p><span class="math display">\[
+\sum_{n=0}^\infty \frac{1}{n!}\frac{\partial ^nf(x)}{\partial x^n}\nabla x^n = f(x)+\frac{\partial f(x)}{\partial x}\nabla x + \frac{1}{2!}\frac{\partial^2f(x)}{\partial x^2}\nabla x^2 + ...
+\]</span></p>
+<p>对于上式，其与 <span class="math inline">\(f(x+\nabla x)\)</span> 之间的误差，可以用下式表示:</p>
+<p><span class="math display">\[
+f(x+\nabla x)-\sum_{n=0}^\infty \frac{1}{n!}\frac{\partial ^nf(x)}{\partial x^n}\nabla x^n=h_k(x)a^k
+\]</span></p>
+<p>保留二阶泰勒展开:</p>
+<p><span class="math display">\[
+f(x+\nabla x) \simeq f(x) + f&#39;(x)\nabla x+\frac{1}{2}f&#39;&#39;(x)\nabla x^2
+\]</span></p>
+<p>这个式子是成立的，当且仅当 <span class="math inline">\(\nabla x\)</span>趋近于 0，我们对上式求导（对 <span class="math inline">\(\nabla x\)</span> 求导）并令导数为 0。</p>
+<p><span class="math display">\[
+f&#39;(x)+f&#39;&#39;(x)\nabla x = 0
+\]</span></p>
+<p>即得到:</p>
+<p><span class="math display">\[
+\nabla x = -\frac{f&#39;(x)}{f&#39;&#39;(x)}
+\]</span></p>
+<p>得出迭代公式</p>
+<p><span class="math display">\[
+x_{n+1} = x_n - \frac{f&#39;(x)}{f&#39;&#39;(x)}
+\]</span></p>
+<p>将损失函数与 <span class="math inline">\(f(x)\)</span> 对应起来:</p>
+<p><span class="math display">\[
+\begin{aligned}
+    f(x)&amp;=l(y_i, \hat{y}_i^{(t-1)} ) \\
+    &amp;=(y_i - \hat{y}_i^{(t-1)})^2 \\
+    f(x+\Delta x)&amp;=l(y_i, \hat{y}_i^{(t-1)} + f_t(x_i)) \\
+    &amp;=(y_i - (\ \hat{y}_i^{(t-1)} + f_t(x_i)\ )\ )^2
+\end{aligned}
+\]</span></p>
+<p>所以实际上 <span class="math inline">\(x\)</span> 即为 <span class="math inline">\(\hat{y}_i^{t-1}\)</span>，而 <span class="math inline">\(\nabla x\)</span> 即为 <span class="math inline">\(f_t(x_i)\)</span>。故对 <span class="math inline">\(f(x)\)</span> 求导数时即对 <span class="math inline">\(\hat{y}_i^{t-1}\)</span> 求偏导，故根据二阶泰勒展开，<span class="math inline">\(f(x+\nabla x\)</span> 可以表示为:</p>
+<p><span class="math display">\[
+f(x+\nabla x)=(y_i-\hat{y}_i^{(t-1)})^2 + [(y_i-\hat{y}_i^{(t-1)})^2]&#39;*f_t(x_i) + \frac{1}{2}[(y_i-\hat{y}_i^{(t-1)})^2]&#39;&#39;*f_t^2(x_i)
+\]</span></p>
+<p>用 <span class="math inline">\(g_i\)</span> 和 <span class="math inline">\(h_i\)</span> 替代上式中的 <span class="math inline">\(f&#39;(x)\)</span> 和 <span class="math inline">\(f&#39;&#39;(x)\)</span>，即可得到</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{obj}^{(t)} = \sum_{i=1}^n [l(y_i, \hat{y}_i^{(t-1)}) + g_i f_t(x_i) + \frac{1}{2} h_i f_t^2(x_i)] + \Omega(f_t) + constant
+\end{aligned}
+\]</span></p>
+<p>理解了一二阶偏导之后再来看正则化项:</p>
+<p><span class="math display">\[
+\Omega(f_t)=\gamma T + \frac{1}{2}\lambda \|w\|^2
+\]</span></p>
+<p>我们为了使目标函数最小，自然正则化项要小，正则化项要小，叶子节点个数 T 要小（叶子越少，树越简单）。</p>
+<p>由于前 t-1 棵树的预测分数与 y 的残差对目标函数优化没有影响可以直接去掉，所以有:</p>
+<p><span class="math display">\[
+Obj^{(t)}=\sum_{i-1}^n [g_i f_t(x_i) + \frac{1}{2} h_i f_t^2(x_i)] + \Omega(f_t)
+\]</span></p>
+<p>上式是将每个样本的损失函数值加起来，我们知道，每个样本最终都会落到一个叶子节点上，所以我们可以将所有同一叶子节点的样本重组起来，过程如下:</p>
+<p><span class="math display">\[
+\begin{aligned}
+Obj^{(t)}&amp;=\sum_{i-1}^n [g_i f_t(x_i) + \frac{1}{2} h_i f_t^2(x_i)] + \Omega(f_t) \\
+&amp;=\sum_{i=1}^n[g_i f_t(x_i) + \frac{1}{2} h_i f_t^2(x_i)] + \gamma T + \frac{1}{2}\lambda \sum_{j=1}^T w_j^2 \\
+&amp;=\sum_{j=1}^T[(\sum_{i \in I_j}g_i)w_j + \frac{1}{2}(\sum_{i \in I_j}h_i+\lambda)w_j^2]+\gamma T \\
+&amp;=\frac{1}{2} \sum_{j=1}^T(H_j+\lambda)(w_j + \frac{G_j}{H_j+\lambda})^2 + \gamma T - \frac{1}{2}\sum_{j=1}^T \frac{G_j^2}{H_j+\lambda} \\
+&amp;=\sum_{j=1}^T[G_jw_j + \frac{1}{2}(H_j + \lambda) w_j^2] + \gamma T
+\end{aligned}
+\]</span></p>
+<p>其中 <span class="math inline">\(G_i = \sum_{i\in I_j} g_i\)</span> 为落入叶子 <span class="math inline">\(i\)</span> 的所有样本一阶梯度统计值综合，<span class="math inline">\(H_i=\sum_{i\in I_j} h_i\)</span> 为落入叶子 <span class="math inline">\(i\)</span> 所有样本二阶梯度统计值总和。</p>
+<p>对 <span class="math inline">\(w_j\)</span> 求导可得</p>
+<p><span class="math display">\[
+w_j^*=-\frac{G_j}{H_j+\lambda}
+\]</span></p>
+<p>代入 <span class="math inline">\(w_j^*\)</span> 有</p>
+<p><span class="math display">\[
+Obj=-\frac{1}{2}\sum_{j=1}^{T}\frac{G_j^2}{H_j+\lambda} + \gamma T
+\]</span></p>
+<p><span class="math inline">\(Obj\)</span> 代表当我们指定一个树结构后，在目标上最多减少多少。因此叫做结构分数。</p>
+<p>目前为止，我们一直在围绕目标函数进行分析。主要也是为了寻找 <span class="math inline">\(f_k(x)\)</span>，也就是建树的过程。回忆决策树算法，建树的时候最关键的一步就是选择一个分裂的准则，也就是如何评价分裂的质量。比如在 GBDT 里，我们可以选择 MSE、MAE 来评价我们分裂的质量。但是我们所选择的分裂准则并不总是和我们的损失函数有关，因为这种选择是启发式的。比如在分类任务里，损失函数可以选择 log loss，分裂准则选择 MSE，这样看来，似乎分裂的好坏和我们的损失并没有直接挂钩。</p>
+<p>但是在 XGBoost 里面，我们的分裂准则是直接与损失函数挂钩的准则。这个也是 XGBoost 与 GBDT 很不一样的地方。</p>
+<p>具体来说，XGBoost 选择这个准则计算增益 Gain</p>
+<p><span class="math display">\[
+Gain=\frac{1}{2}[\frac{G_L^2}{H_L+\lambda}+ \frac{G_R^2}{H_R+\lambda}- \frac{(G_L + G_R)^2}{H_L+H_R+\lambda}]-\gamma
+\]</span></p>
+<p>其中 <span class="math inline">\(G_L\)</span> 代表分裂的话左叶子节点中样本点的集合的一阶梯度和，<span class="math inline">\(G_R\)</span> 代表右边边界的。</p>
+<p>当所有样本都存在于未分类的节点中，此时该节点中一阶导的和就相当于 <span class="math inline">\(G_L+G_R\)</span>，未分裂节点上的二阶导数为 <span class="math inline">\(H_L+H_R\)</span>，将其带入结构分数中，我们得到不分裂的情况下的结构分数。</p>
+<p><span class="math display">\[
+\frac{(G_L + G_R)^2}{H_L+H_R+\lambda}
+\]</span></p>
+<p>假设这个接点分裂，分类之后左右叶子节点的结构分数分别为:</p>
+<p><span class="math display">\[\frac{G_L^2}{H_L+\lambda}\]</span></p>
+<p><span class="math display">\[\frac{G_R^2}{H_R+\lambda}\]</span></p>
+<p>分裂的时候我们选择分裂之后损失减少最多的，也就是找到一种分裂有着</p>
+<p><span class="math display">\[
+\max (\frac{G_L^2}{H_L+\lambda}+ \frac{G_R^2}{H_R+\lambda}- \frac{(G_L + G_R)^2}{H_L+H_R+\lambda})
+\]</span></p>
+<p>那么 <span class="math inline">\(\gamma\)</span> 的作用即为控制树的复杂度。进一步说，利用 <span class="math inline">\(\gamma\)</span> 作为阈值，只有当大于 <span class="math inline">\(\gamma\)</span> 时才选择分裂，也起到预剪枝的作用。</p>
+<p>所以总结一下，XGBoost 主要做了以下几件事。</p>
+<ol style="list-style-type: decimal">
+<li>在损失函数中加入了正则化项。</li>
+<li>对目标函数进行二阶泰勒展开。</li>
+<li>利用推导得到的表达式作为分裂准则构建每一棵树。</li>
+</ol>
+<h2 id="总结xgboost-与-gbdt-的区别与联系"><strong>总结：XGBoost 与 GBDT 的区别与联系</strong></h2>
+<p>区别:</p>
+<ol style="list-style-type: decimal">
+<li>xgboost和GBDT的一个区别在于目标函数上。在xgboost中，损失函数+正则项。 GBDT中一般只有损失函数。</li>
+<li>xgboost中利用二阶导数的信息，而GBDT只利用了一阶导数, 即在GBDT回归中利用了残差的概念。</li>
+<li>xgboost在建树的时候利用的准则来源于目标函数推导，即可以理解为牛顿法。而GBDT建树利用的是启发式准则。</li>
+<li>xgboost中可以自动处理空缺值，自动学习空缺值的分裂方向，GBDT(sklearn版本)不允许包含空缺值。</li>
+</ol>
+<p>相似:</p>
+<ol style="list-style-type: decimal">
+<li>xgboost和GBDT的学习过程都是一样的，都是基于Boosting的思想，先学习前n-1个学习器，然后基于前n-1个学习器学习第n个学习器。而且其都是将损失函数和分裂点评估函数分开了。</li>
+<li>建树过程都利用了损失函数的导数信息。</li>
+<li>都使用了学习率来进行Shrinkage，从前面我们能看到不管是GBDT还是xgboost，我们都会利用学习率对拟合结果做缩减以减少过拟合的风险。</li>
+</ol>
+<h2 id="参考"><strong>参考</strong></h2>
+<ul>
+<li><a href="https://www.wikiwand.com/en/XGBoost" target="_blank" rel="noopener">XGBoost Wikipedia</a></li>
+<li><a href="https://www.jianshu.com/p/ac1c12f3fba1" target="_blank" rel="noopener">XGBoost详解 Teci著</a></li>
+<li><a href="https://fengxc.me/GBDT%E8%AF%A6%E8%A7%A3.html" target="_blank" rel="noopener">GBDT与Xgboost详解 小川著</a></li>
+</ul>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Boosting/" rel="tag"># Boosting</a>
+          
+            <a href="/tags/集成学习/" rel="tag"># 集成学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/18/Boosting2/" rel="next" title="Boosting算法族二 BT, GBDT">
+                <i class="fa fa-chevron-left"></i> Boosting算法族二 BT, GBDT
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/23/leetcode33/" rel="prev" title="Leetcode 33. Search in Rotated Sorted Array">
+                Leetcode 33. Search in Rotated Sorted Array <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -483,8 +700,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -606,6 +832,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推导"><span class="nav-number">2.</span> <span class="nav-text">推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结xgboost-与-gbdt-的区别与联系"><span class="nav-number">3.</span> <span class="nav-text">总结：XGBoost 与 GBDT 的区别与联系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -730,6 +973,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -745,6 +992,8 @@
 
   
 
+
+  
 
 
   

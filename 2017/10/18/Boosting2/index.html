@@ -96,16 +96,18 @@
 
 
 
-  <meta name="description" content="不忘初心，方得始终">
-<meta property="og:type" content="website">
-<meta property="og:title" content="流水">
-<meta property="og:url" content="http://yoursite.com/tags/Boosting/index.html">
+  <meta name="description" content="前言 本文续接上文关于Adaboost的内容，继续记录 Boosting 算法族的其他算法。上一篇博客简单介绍了了加法模型和向前分布算法，以及 Adaboost 模型的原理和推导过程。本篇博客主要介绍 Boosted Decision Tree （提升树） 和 Bradient Boosting Decision Tree（GBDT）两种算法。其中 GDBT 可以理解为 BDT 的一种推广形式。">
+<meta name="keywords" content="Algorithm,Machine Learning,Boosting,集成学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Boosting算法族二 BT, GBDT">
+<meta property="og:url" content="http://yoursite.com/2017/10/18/Boosting2/index.html">
 <meta property="og:site_name" content="流水">
-<meta property="og:description" content="不忘初心，方得始终">
+<meta property="og:description" content="前言 本文续接上文关于Adaboost的内容，继续记录 Boosting 算法族的其他算法。上一篇博客简单介绍了了加法模型和向前分布算法，以及 Adaboost 模型的原理和推导过程。本篇博客主要介绍 Boosted Decision Tree （提升树） 和 Bradient Boosting Decision Tree（GBDT）两种算法。其中 GDBT 可以理解为 BDT 的一种推广形式。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-07T14:40:16.146Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="流水">
-<meta name="twitter:description" content="不忘初心，方得始终">
+<meta name="twitter:title" content="Boosting算法族二 BT, GBDT">
+<meta name="twitter:description" content="前言 本文续接上文关于Adaboost的内容，继续记录 Boosting 算法族的其他算法。上一篇博客简单介绍了了加法模型和向前分布算法，以及 Adaboost 模型的原理和推导过程。本篇博客主要介绍 Boosted Decision Tree （提升树） 和 Bradient Boosting Decision Tree（GBDT）两种算法。其中 GDBT 可以理解为 BDT 的一种推广形式。">
 
 
 
@@ -113,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/Boosting/">
+  <link rel="canonical" href="http://yoursite.com/2017/10/18/Boosting2/">
 
 
 
@@ -123,7 +125,7 @@
   };
 </script>
 
-  <title>标签: Boosting | 流水</title>
+  <title>Boosting算法族二 BT, GBDT | 流水</title>
   
 
 
@@ -171,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,7 +228,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -338,132 +340,269 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Boosting<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/18/Boosting2/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mors">
+      <meta itemprop="description" content="不忘初心，方得始终">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="流水">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2017/10/30/Boosting3/" itemprop="url">
-            
-              <span itemprop="name">Boosting算法族三 XGBoost</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Boosting算法族二 BT, GBDT
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-10-30T00:12:31+08:00" content="2017-10-30">
-          10-30
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-10-18 22:23:51" itemprop="dateCreated datePublished" datetime="2017-10-18T22:23:51+08:00">2017-10-18</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2017/10/18/Boosting2/" itemprop="url">
-            
-              <span itemprop="name">Boosting算法族二 BT, GBDT</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-10-18T22:23:51+08:00" content="2017-10-18">
-          10-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2017/10/09/Boosting1/" itemprop="url">
-            
-              <span itemprop="name">Boosting算法族一 Adaboost</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-10-09T21:10:19+08:00" content="2017-10-09">
-          10-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h2 id="前言"><strong>前言</strong></h2>
+<p>本文续接<a href="https://mors.xyz/2017/10/09/Boosting1/" target="_blank" rel="noopener">上文</a>关于Adaboost的内容，继续记录 Boosting 算法族的其他算法。上一篇博客简单介绍了了加法模型和向前分布算法，以及 Adaboost 模型的原理和推导过程。本篇博客主要介绍 Boosted Decision Tree （提升树） 和 Bradient Boosting Decision Tree（GBDT）两种算法。其中 GDBT 可以理解为 BDT 的一种推广形式。</p>
+<a id="more"></a>
+<h2 id="boosted-decision-tree"><strong>Boosted Decision Tree</strong></h2>
+<h3 id="算法">算法</h3>
+<hr>
+<p>输入: <span class="math inline">\(D = \{(\boldsymbol{x}^{(1)}, y^{(1)}), (\boldsymbol{x}^{(2)}, y^{(2)}), ... , (\boldsymbol{x}^{(m)}, y^{(m)})\}\)</span><br>
+输出: 提升树 <span class="math inline">\(f_k(\boldsymbol{x})\)</span><br>
+  (1) 初始化模型 <span class="math inline">\(f_0(\boldsymbol{x}) = 0\)</span><br>
+  (2) for t in 1,2, ..., k; do<br>
+    (a) 计算残差 <span class="math inline">\(r_t=y^{(t)} - f_{t-1}(\boldsymbol{x^{(i)}})\)</span><br>
+    (b) 拟合残差 <span class="math inline">\(r_{t}\)</span>，学习一个回归树，得到 <span class="math inline">\(T(\boldsymbol{x}; \theta_t)\)</span><br>
+    (c) 更新 <span class="math inline">\(f_t(\boldsymbol{x})=f_{t-1}(\boldsymbol{x})+T(\boldsymbol{x}; \theta_t)\)</span><br>
+  (3) 得到回归树 <span class="math inline">\(f_k(\boldsymbol{x})=\sum_{t=1}^KT(\boldsymbol{x};\theta_t)\)</span></p>
+<hr>
+<h3 id="简介">简介</h3>
+<p>残差树是针对回归问题的一种提升方法。其基学习器是基于CART算法的回归树，模型依旧为加法模型、损失函数为平方函数、学习算法为前向分步算法。</p>
+<p>其使用以下的前向分步算法：</p>
+<p><span class="math display">\[
+\begin{aligned}
+   f_0(\boldsymbol{x})&amp;=0 \\
+   f_k(\boldsymbol{x})&amp;=f_{k-1}(\boldsymbol{x})+T(\boldsymbol{x};\theta_k) \\
+   f_k(\boldsymbol{x})&amp;=\sum_{k=1}^KT(\boldsymbol{x}; \theta_k)
+\end{aligned}
+\]</span></p>
+<p>在第 k 步，给定当前模型 <span class="math inline">\(f_{k-1}(\boldsymbol{x})\)</span> 须求解</p>
+<p><span class="math display">\[
+    \hat{\theta}_k=\arg\min_{\theta_k} \sum_{i=1}^M L(y^{(i)}, f_{k-1}(\boldsymbol{x}) + T(\boldsymbol{x}^{(i)};\theta_k))
+\]</span></p>
+<p>若采用平方误差损失函数</p>
+<p><span class="math display">\[
+    L(y, f(\boldsymbol{x})) = (y-f(\boldsymbol{x}))^2
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+    L(y, f_{k-1}(\boldsymbol{x})+ T(\boldsymbol{x}^{(i)};\theta_k))
+    &amp;=[y - f_{k-1}(\boldsymbol{x})-T(\boldsymbol{x}^{(i)};\theta_k)]^2  \\
+    &amp;=[r-T(\boldsymbol{x}^{(i)};\theta_k)]^2
+\end{aligned}
+\]</span></p>
+<p>其中 <span class="math inline">\(r=y-f_{k-1}(\boldsymbol{x})\)</span> 即为残差</p>
+<h2 id="gbdt"><strong>GBDT</strong></h2>
+<p>Adaboost 算法使用指数损失函数，BDT 使用平方损失函数。这两类损失函数在平方算法中都是比较容易优化的。但是一般的损失函数可能就没有类似的性质。因此有人提出了梯度提升的概念，即利用损失函数的负梯度在当前模型的值作为回归问题提升树算法中残差的近似。即为梯度提升树 (Gradient Boostes Decision Tree).</p>
+<p>GDBT其基本原理和残差树类似，基学习器是基于CART算法的回归树，模型依旧为加法模型、学习算法为前向分步算法。不同的是，GDBT没有规定损失函数的类型，设损失函数为 <span class="math inline">\(L(y,f(x))\)</span> 。前向加法算法的每一步都是拟合损失函数的负梯度。</p>
+<p><span class="math display">\[
+    -[\frac{\partial L(y^{(i)},f(\boldsymbol{x}^{(i)}))}{\partial f(\boldsymbol{x}^{(i)})}]_{f(\boldsymbol{x})=f_{k-1}(\boldsymbol{x}) \approx r_{m,i}}
+\]</span></p>
+<p>算法：</p>
+<hr>
+<p>输入: 训练集 <span class="math inline">\(D = \{(\boldsymbol{x}^{(1)}, y^{(1)}), (\boldsymbol{x}^{(2)}, y^{(2)}), ... , (\boldsymbol{x}^{(m)}, y^{(m)})\}\)</span><br>
+    损失函数 <span class="math inline">\(L(y, f(\boldsymbol{x}))\)</span><br>
+输出: 提升树 <span class="math inline">\(\hat{f}(\boldsymbol{x})\)</span><br>
+  (1) 初始化模型 <span class="math inline">\(f_0(\boldsymbol{x})=\arg\min_c\sum_{i=1}^ML(y^{(i)},c)\)</span>， <span class="math inline">\(c\)</span>为常数<br>
+  (2) 循环训练 k 个模型 k = 1, 2, 3,...,K<br>
+    (a) 计算残差 i 对于 i=1, 2,... ,K</p>
+<p><span class="math display">\[r_{k, j}=-[\frac{\partial L(y^{(i)},f(\boldsymbol{x}^{(i)}))}{\partial f(\boldsymbol{x}^{(i)})}]_{f(\boldsymbol{x})=f_{k-1}(\boldsymbol{x})}\]</span></p>
+<p>    (b) 拟合残差 <span class="math inline">\(r_{k, j}\)</span> 学习一个回归树，得到第 k 颗树的叶节点区域 <span class="math inline">\(R_{k,j}\)</span>，<span class="math inline">\(j=1,2,3,...,J\)</span><br>
+    (c) 对 <span class="math inline">\(j=1,2,...,J\)</span> 计算</p>
+<p><span class="math display">\[c_{k,j}=\arg\min_c\sum_{ x^{(i)}\in R_{k,j}}L(y^{(i)},f_{k-1}(\boldsymbol{x}^{(i)})+c)\]</span></p>
+<p>    (d) 更新模型</p>
+<p><span class="math display">\[f_k(\boldsymbol{x})=f_{k-1}(\boldsymbol{x})+\sum_{j=1}^JC_{k,j}\mathbb{I}(\boldsymbol{x} \in R_{k,j})\]</span></p>
+<p>  (3) 得到回归提升树</p>
+<p><span class="math display">\[
+    \hat{f}(\boldsymbol{x})=f_K(\boldsymbol{x})=\sum_{k=1}^K\sum_{j=1}^J C_{k,j}\mathbb{I}(\boldsymbol{x} \in R_{k,j})
+\]</span></p>
+<hr>
+<p>当损失函数为 <span class="math inline">\(l(y,\hat{y})=\frac{1}{2}(y-\hat{y})^2\)</span> 时，负梯度为 <span class="math inline">\(-[\frac{\partial L(y, \hat{y})}{\partial\hat{y}}]=(y-\hat{y})\)</span>，即为残差。</p>
+<p>如果一个函数到达极小值，那么其梯度值一定为零；当函数没有到达最小值的时候，我们每次都选择梯度的反方向走，这样可以最快的到达极小值。这也就是GDBT的思想。</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Boosting/" rel="tag"># Boosting</a>
+          
+            <a href="/tags/集成学习/" rel="tag"># 集成学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/09/Boosting1/" rel="next" title="Boosting算法族一 Adaboost">
+                <i class="fa fa-chevron-left"></i> Boosting算法族一 Adaboost
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/30/Boosting3/" rel="prev" title="Boosting算法族三 XGBoost">
+                Boosting算法族三 XGBoost <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -483,8 +622,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -606,6 +754,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boosted-decision-tree"><span class="nav-number">2.</span> <span class="nav-text">Boosted Decision Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法"><span class="nav-number">2.1.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">2.2.</span> <span class="nav-text">简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gbdt"><span class="nav-number">3.</span> <span class="nav-text">GBDT</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -730,6 +895,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -745,6 +914,8 @@
 
   
 
+
+  
 
 
   
